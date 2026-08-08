@@ -16,6 +16,14 @@ export default function CtaFinal() {
         className="pointer-events-none absolute inset-0 bg-gradient-to-b from-tinta/70 via-tinta/80 to-tinta/95"
         aria-hidden="true"
       />
+      <img
+        src="/assets/sticker-boneco-explorador.webp"
+        alt=""
+        className="pointer-events-none absolute bottom-4 left-4 hidden w-24 rotate-6 rounded-md border-2 border-papel/70 shadow-lg sm:block lg:w-28"
+        width="300"
+        height="364"
+        aria-hidden="true"
+      />
 
       <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
         <img

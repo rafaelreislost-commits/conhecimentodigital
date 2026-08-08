@@ -25,6 +25,7 @@ const REGRAS = [
 ];
 
 const NAO_CONVERTER = new Set(["hero-mockup"]); // não é mais usado no código
+const MANTER_FORMATO = new Set(["og"]); // precisa ficar em JPG (compatibilidade com Facebook/WhatsApp/LinkedIn)
 
 function larguraPara(nomeBase) {
   const regra = REGRAS.find((r) => r.arquivos.includes(nomeBase));
@@ -36,6 +37,7 @@ async function converterArquivo(caminho, pastaRelativa = "") {
   if (![".png", ".jpg", ".jpeg"].includes(ext)) return;
 
   const nomeBase = basename(caminho, ext);
+  if (MANTER_FORMATO.has(nomeBase)) return;
   if (NAO_CONVERTER.has(nomeBase)) {
     await unlink(caminho);
     console.log(`removido (não usado): ${pastaRelativa}${nomeBase}${ext}`);

@@ -154,7 +154,8 @@ export const BONUS = {
       titulo: "Mapa de Progresso",
       texto:
         "Pôster para colar na parede. A criança marca cada atividade concluída e vê a trilha avançar — a gamificação acontece no papel, não na tela.",
-      imagem: "mapa.webp",
+      imagem: "real-mapa.webp",
+      destaque: true,
     },
     {
       id: "cartoes",
@@ -162,7 +163,7 @@ export const BONUS = {
       titulo: "Cartões de Recompensa",
       texto:
         "30 cartões colecionáveis para imprimir e recortar. Reforço positivo que cria hábito sem virar suborno.",
-      imagem: "cartoes.webp",
+      imagem: "real-cards.webp",
     },
     {
       id: "guia",
@@ -170,7 +171,7 @@ export const BONUS = {
       titulo: "Guia Rápido dos Pais",
       texto:
         "Como acompanhar sem brigar: o que dizer quando ele erra, quanto tempo por sessão, como saber se está no ano certo.",
-      imagem: "guia.webp",
+      imagem: "real-guia.webp",
     },
     {
       id: "plano",
@@ -186,7 +187,8 @@ export const BONUS = {
       titulo: "Bonecos de Papel",
       texto:
         "5 personagens do elenco para recortar e montar. Vira brincadeira de mesa depois da atividade.",
-      imagem: "bonecos.webp",
+      imagem: "real-bonecos.webp",
+      etiqueta: "Novo",
     },
   ],
 };

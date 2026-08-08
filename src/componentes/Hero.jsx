@@ -33,7 +33,7 @@ export default function Hero() {
           <img
             src="/assets/logo-mundo-dos-blocos.webp"
             alt={PRODUTO.nome}
-            className="mb-7 h-14 w-auto rounded-md shadow-lg sm:h-16"
+            className="mb-7 h-20 w-auto rounded-md shadow-lg sm:h-24"
             width="900"
             height="502"
           />

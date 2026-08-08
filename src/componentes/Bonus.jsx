@@ -26,15 +26,32 @@ export default function Bonus() {
 
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {BONUS.itens.map((b) => (
-            <article key={b.id} className="painel-rpg flex flex-col overflow-hidden p-4">
-              <img
-                src={`/assets/${b.imagem}`}
-                alt={b.titulo}
-                className="aspect-square w-full rounded-sm border-2 border-ambar/50 object-cover shadow-md"
-                width="700"
-                height="700"
-                loading="lazy"
-              />
+            <article
+              key={b.id}
+              className={`painel-rpg relative flex flex-col overflow-hidden p-4 ${
+                b.destaque ? "lg:col-span-2" : ""
+              }`}
+            >
+              {b.destaque && (
+                <span className="bloco-sm absolute top-2 right-2 z-10 rounded-sm bg-energia px-2.5 py-1 text-[10px] font-extrabold tracking-wide text-papel uppercase">
+                  Favorito da criançada
+                </span>
+              )}
+              {b.etiqueta && (
+                <span className="bloco-sm absolute top-2 right-2 z-10 rounded-sm bg-grama px-2.5 py-1 text-[10px] font-extrabold tracking-wide text-papel uppercase">
+                  {b.etiqueta}
+                </span>
+              )}
+              <div className="flex h-64 items-center justify-center rounded-sm border-2 border-ambar/50 bg-papel p-2">
+                <img
+                  src={`/assets/${b.imagem}`}
+                  alt={b.titulo}
+                  className="max-h-full w-auto rounded-xs object-contain shadow-md"
+                  width="700"
+                  height="900"
+                  loading="lazy"
+                />
+              </div>
               <div className="mt-4">
                 <span className="text-xs font-extrabold tracking-wider text-ambar uppercase">
                   Extra {b.numero}
