@@ -39,6 +39,9 @@ for (const { chave, arquivo } of MATERIAIS) {
     addRandomSuffix: false,
     allowOverwrite: true,
     contentType: "application/pdf",
+    // Força o token do Blob store em vez do OIDC token da Vercel CLI, que
+    // vem escopado ao ambiente "development" e não tem permissão de escrita.
+    token: process.env.BLOB_READ_WRITE_TOKEN,
   });
   urls[chave] = resultado.url;
   console.log(`${chave} -> ${resultado.url}`);

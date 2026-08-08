@@ -1,8 +1,8 @@
 {
-  "portugues": "",
-  "matematica": "",
-  "mapa": "",
-  "cards": "",
-  "guia": "",
-  "bonecos": ""
+  "portugues": "https://4wsbsii5w3b9mlkd.public.blob.vercel-storage.com/materiais/Portugues-no-Mundo-dos-Blocos.pdf",
+  "matematica": "https://4wsbsii5w3b9mlkd.public.blob.vercel-storage.com/materiais/Matematica-no-Mundo-dos-Blocos.pdf",
+  "mapa": "https://4wsbsii5w3b9mlkd.public.blob.vercel-storage.com/materiais/Mapa-de-Progresso-do-Aventureiro.pdf",
+  "cards": "https://4wsbsii5w3b9mlkd.public.blob.vercel-storage.com/materiais/Cards-de-Recompensa.pdf",
+  "guia": "https://4wsbsii5w3b9mlkd.public.blob.vercel-storage.com/materiais/Guia-Rapido-para-os-Pais.pdf",
+  "bonecos": "https://4wsbsii5w3b9mlkd.public.blob.vercel-storage.com/materiais/Bonecos-de-Papel.pdf"
 }
