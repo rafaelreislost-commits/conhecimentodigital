@@ -12,8 +12,8 @@ export const PRODUTO = {
   // do produto. Os nomes são marcas registradas da Mojang/Microsoft e da Roblox
   // Corp — usá-los no nome do produto ou nos anúncios é risco real de takedown
   // (e de derrubarem a conta de anúncios junto). O tema visual continua o mesmo.
-  totalAtividades: 50,
-  totalPaginas: 118,
+  totalAtividades: 180,
+  totalPaginas: 184,
   anoInicial: 1,
   anoFinal: 6,
 };
@@ -31,7 +31,7 @@ export const HERO = {
   selo: "Material digital para imprimir em casa",
   titulo: ["Seu filho aprendendo", "de verdade", "no mundo dos blocos"],
   subtitulo:
-    "50 atividades de Português e Matemática do 1º ao 6º ano, com a cara dos jogos de blocos que ele já ama. Você imprime, ele resolve — longe da tela.",
+    "180 atividades de Português e Matemática do 1º ao 6º ano, com a cara dos jogos de blocos que ele já ama. Você imprime, ele resolve — longe da tela.",
   cta: "Quero o material agora",
   ctaSecundaria: "Ver o que vem dentro",
   bullets: [
@@ -98,7 +98,7 @@ export const MODULOS = {
       titulo: "Primeiras palavras",
       texto:
         "Vogais, consoantes, sílabas simples e reconhecimento de palavras. Contagem até 20 e as primeiras somas com blocos.",
-      atividades: 6,
+      atividades: 30,
     },
     {
       id: 2,
@@ -106,7 +106,7 @@ export const MODULOS = {
       titulo: "Sílabas e somas",
       texto:
         "Separação de sílabas, ordem alfabética e vocabulário. Adição e subtração até 100 em problemas ilustrados.",
-      atividades: 8,
+      atividades: 30,
     },
     {
       id: 3,
@@ -114,7 +114,7 @@ export const MODULOS = {
       titulo: "Classes de palavras",
       texto:
         "Substantivo, adjetivo e verbo na bancada de crafting. Multiplicação, dobro e metade, tabuada visual.",
-      atividades: 8,
+      atividades: 30,
     },
     {
       id: 4,
@@ -122,7 +122,7 @@ export const MODULOS = {
       titulo: "Frases e operações",
       texto:
         "Formação de frases, pontuação e concordância. Divisão, problemas de duas etapas e medidas.",
-      atividades: 10,
+      atividades: 30,
     },
     {
       id: 5,
@@ -130,7 +130,7 @@ export const MODULOS = {
       titulo: "Ortografia e frações",
       texto:
         "Letras que confundem, acentuação e tempos verbais. Frações, decimais e porcentagem simples.",
-      atividades: 10,
+      atividades: 30,
     },
     {
       id: 6,
@@ -138,7 +138,7 @@ export const MODULOS = {
       titulo: "Leitura e proporção",
       texto:
         "Interpretação de texto, pronomes e coesão. Proporção, área, perímetro e raciocínio lógico.",
-      atividades: 8,
+      atividades: 30,
     },
   ],
 };
@@ -229,13 +229,13 @@ export const PLANOS = {
     {
       id: "basico",
       nome: "Só o material",
-      descricao: "As 50 atividades completas, sem os extras.",
+      descricao: "As 180 atividades completas, sem os extras.",
       precoDe: 39.9,
       preco: 19.9,
       parcelas: null,
       destaque: false,
       recursos: [
-        { texto: "50 atividades (25 Português + 25 Matemática)", tem: true },
+        { texto: "180 atividades (90 Português + 90 Matemática)", tem: true },
         { texto: "Do 1º ao 6º ano", tem: true },
         { texto: "Gabarito completo", tem: true },
         { texto: "PDF vitalício para reimprimir", tem: true },
@@ -256,7 +256,7 @@ export const PLANOS = {
       destaque: true,
       selo: "Melhor custo-benefício",
       recursos: [
-        { texto: "50 atividades (25 Português + 25 Matemática)", tem: true },
+        { texto: "180 atividades (90 Português + 90 Matemática)", tem: true },
         { texto: "Do 1º ao 6º ano", tem: true },
         { texto: "Gabarito completo", tem: true },
         { texto: "PDF vitalício para reimprimir", tem: true },
