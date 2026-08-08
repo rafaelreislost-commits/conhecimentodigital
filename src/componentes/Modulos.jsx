@@ -16,7 +16,7 @@ export default function Modulos() {
           >
             <div className="relative h-56 shrink-0 overflow-hidden border-b-3 border-tinta">
               <img
-                src={`/assets/modulo-${m.id}.png`}
+                src={`/assets/modulo-${m.id}.webp`}
                 alt=""
                 className="size-full object-cover transition-transform duration-300 group-hover:scale-105"
                 width="1600"

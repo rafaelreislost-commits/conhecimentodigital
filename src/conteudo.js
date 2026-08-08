@@ -154,7 +154,7 @@ export const BONUS = {
       titulo: "Mapa de Progresso",
       texto:
         "Pôster para colar na parede. A criança marca cada atividade concluída e vê a trilha avançar — a gamificação acontece no papel, não na tela.",
-      imagem: "mapa.png",
+      imagem: "mapa.webp",
     },
     {
       id: "cartoes",
@@ -162,7 +162,7 @@ export const BONUS = {
       titulo: "Cartões de Recompensa",
       texto:
         "30 cartões colecionáveis para imprimir e recortar. Reforço positivo que cria hábito sem virar suborno.",
-      imagem: "cartoes.png",
+      imagem: "cartoes.webp",
     },
     {
       id: "guia",
@@ -170,7 +170,7 @@ export const BONUS = {
       titulo: "Guia Rápido dos Pais",
       texto:
         "Como acompanhar sem brigar: o que dizer quando ele erra, quanto tempo por sessão, como saber se está no ano certo.",
-      imagem: "guia.png",
+      imagem: "guia.webp",
     },
     {
       id: "plano",
@@ -178,7 +178,7 @@ export const BONUS = {
       titulo: "Plano de Estudos Semanal",
       texto:
         "Roteiro pronto de 8 semanas. Você olha o dia e sabe qual atividade aplicar — sem improviso e sem culpa.",
-      imagem: "plano.png",
+      imagem: "plano.webp",
     },
   ],
 };

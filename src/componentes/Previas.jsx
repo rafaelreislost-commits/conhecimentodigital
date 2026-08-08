@@ -2,14 +2,14 @@ import { useRef } from "react";
 import { Etiqueta, Secao, Subtitulo, Titulo } from "./Ui";
 
 const PREVIAS = [
-  { arq: "paginas/pt-01.png", txt: "Caça-palavras temático", materia: "Português" },
-  { arq: "paginas/ma-01.png", txt: "Problemas com blocos", materia: "Matemática" },
-  { arq: "paginas/pt-02.png", txt: "Separação de sílabas", materia: "Português" },
-  { arq: "paginas/ma-02.png", txt: "Tabuada visual", materia: "Matemática" },
-  { arq: "paginas/pt-03.png", txt: "Classes de palavras", materia: "Português" },
-  { arq: "paginas/ma-03.png", txt: "Frações ilustradas", materia: "Matemática" },
-  { arq: "paginas/pt-04.png", txt: "Interpretação de texto", materia: "Português" },
-  { arq: "paginas/ma-04.png", txt: "Medidas e proporção", materia: "Matemática" },
+  { arq: "paginas/pt-01.webp", txt: "Caça-palavras temático", materia: "Português" },
+  { arq: "paginas/ma-01.webp", txt: "Problemas com blocos", materia: "Matemática" },
+  { arq: "paginas/pt-02.webp", txt: "Separação de sílabas", materia: "Português" },
+  { arq: "paginas/ma-02.webp", txt: "Tabuada visual", materia: "Matemática" },
+  { arq: "paginas/pt-03.webp", txt: "Classes de palavras", materia: "Português" },
+  { arq: "paginas/ma-03.webp", txt: "Frações ilustradas", materia: "Matemática" },
+  { arq: "paginas/pt-04.webp", txt: "Interpretação de texto", materia: "Português" },
+  { arq: "paginas/ma-04.webp", txt: "Medidas e proporção", materia: "Matemática" },
 ];
 
 export default function Previas() {

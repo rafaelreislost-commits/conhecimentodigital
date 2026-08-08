@@ -15,7 +15,7 @@ export default function Bonus() {
   return (
     <Secao id="bonus" className="relative overflow-hidden border-b-3 border-tinta bg-tinta">
       <img
-        src="/assets/modulo-3.png"
+        src="/assets/modulo-3.webp"
         alt=""
         className="absolute inset-0 size-full object-cover opacity-30"
         aria-hidden="true"
@@ -41,7 +41,7 @@ export default function Bonus() {
               className="painel-rpg relative flex gap-5 overflow-visible p-6 pt-8"
             >
               <img
-                src={`/assets/${PERSONAGEM_POR_BONUS[b.id] ?? "mascote"}.png`}
+                src={`/assets/${PERSONAGEM_POR_BONUS[b.id] ?? "mascote"}.webp`}
                 alt=""
                 className="absolute -top-8 -left-2 h-28 w-auto shrink-0 drop-shadow-lg sm:h-32"
                 width="2048"

@@ -6,7 +6,7 @@ export default function Hero() {
     <header className="relative overflow-hidden border-b-3 border-tinta bg-tinta">
       {/* Cena ilustrada rica em tela cheia, como fundo dominante do Hero */}
       <img
-        src="/assets/cenario-mundo.jpg"
+        src="/assets/cenario-mundo.webp"
         alt=""
         className="absolute inset-0 size-full object-cover"
         aria-hidden="true"
@@ -22,7 +22,7 @@ export default function Hero() {
       />
       {/* Elenco reunido, em pé no chão da cena, ancorando a base do Hero */}
       <img
-        src="/assets/grupo-personagens.jpg"
+        src="/assets/grupo-personagens.webp"
         alt="Explorador, Construtora, Leitora, Leitor e Mascote reunidos no Mundo dos Blocos"
         className="pointer-events-none absolute inset-x-0 bottom-0 hidden h-[46%] w-full object-cover object-top [mask-image:linear-gradient(to_bottom,black_70%,transparent)] lg:block"
         aria-hidden="true"
@@ -88,7 +88,7 @@ export default function Hero() {
             {/* Selo do total de atividades, sobre o emblema do mundo */}
             <div className="bloco absolute -top-5 -right-4 z-10 flex size-24 rotate-6 flex-col items-center justify-center rounded-full text-papel sm:size-28">
               <img
-                src="/assets/emblema-mundo.jpg"
+                src="/assets/emblema-mundo.webp"
                 alt=""
                 className="absolute inset-0 -z-10 size-full rounded-full object-cover"
                 aria-hidden="true"
@@ -103,14 +103,14 @@ export default function Hero() {
 
             <div className="grid grid-cols-3 gap-3">
               <img
-                src="/assets/completo.png"
+                src="/assets/completo.webp"
                 alt="Capa do pacote completo Mundo dos Blocos"
                 className="col-span-3 w-full rounded-md border-2 border-ambar/70 shadow-lg"
                 width="1200"
                 height="1600"
               />
               <img
-                src="/assets/portugues.png"
+                src="/assets/portugues.webp"
                 alt="Capa do livro Português no Mundo dos Blocos"
                 className="rounded-sm border-2 border-ambar/50 shadow-md"
                 width="600"
@@ -118,7 +118,7 @@ export default function Hero() {
                 loading="lazy"
               />
               <img
-                src="/assets/matematica.png"
+                src="/assets/matematica.webp"
                 alt="Capa do livro Matemática no Mundo dos Blocos"
                 className="rounded-sm border-2 border-ambar/50 shadow-md"
                 width="600"
@@ -129,7 +129,7 @@ export default function Hero() {
                 {["explorador", "leitora"].map((p) => (
                   <img
                     key={p}
-                    src={`/assets/${p}.png`}
+                    src={`/assets/${p}.webp`}
                     alt=""
                     className="h-full w-auto drop-shadow-md"
                     width="2048"

@@ -7,7 +7,7 @@ export default function Garantia() {
       <div className="bloco mx-auto flex max-w-4xl flex-col items-center gap-8 rounded-md bg-papel p-8 text-center sm:p-12 md:flex-row md:text-left">
         <div className="bloco-sm relative flex size-44 shrink-0 items-center justify-center rounded-full bg-ambar/25">
           <img
-            src="/assets/mascote.png"
+            src="/assets/mascote.webp"
             alt="Mascote do Mundo dos Blocos acenando"
             className="h-40 w-auto drop-shadow-lg"
             width="2048"

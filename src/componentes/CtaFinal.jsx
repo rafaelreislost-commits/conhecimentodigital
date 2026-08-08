@@ -7,7 +7,7 @@ export default function CtaFinal() {
   return (
     <section className="relative overflow-hidden border-b-3 border-tinta bg-tinta px-5 py-20 text-papel sm:px-8">
       <img
-        src="/assets/modulo-5.png"
+        src="/assets/modulo-5.webp"
         alt=""
         className="absolute inset-0 size-full object-cover opacity-40"
         aria-hidden="true"
@@ -19,7 +19,7 @@ export default function CtaFinal() {
 
       <div className="relative mx-auto flex max-w-3xl flex-col items-center text-center">
         <img
-          src="/assets/mascote.png"
+          src="/assets/mascote.webp"
           alt=""
           className="mb-4 h-24 w-auto drop-shadow-lg"
           width="2048"

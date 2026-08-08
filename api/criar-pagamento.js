@@ -3,18 +3,7 @@
 //
 // Configurar na Vercel: Project Settings → Environment Variables → MP_ACCESS_TOKEN
 import { MercadoPagoConfig, Preference } from "mercadopago";
-
-// Preço e nome definidos aqui (servidor), nunca confiar no que vem do cliente.
-const PLANOS = {
-  basico: {
-    titulo: "Mundo dos Blocos — Só o material",
-    preco: 19.9,
-  },
-  completo: {
-    titulo: "Mundo dos Blocos — Pacote completo",
-    preco: 34.9,
-  },
-};
+import { PLANOS } from "./_planos.js";
 
 export default async function handler(req, res) {
   if (req.method !== "GET" && req.method !== "POST") {
@@ -51,6 +40,8 @@ export default async function handler(req, res) {
             currency_id: "BRL",
           },
         ],
+        // Identifica o plano comprado para o webhook, sem depender do item.
+        external_reference: planoId,
         back_urls: {
           success: `${origem}/obrigado`,
           failure: `${origem}/?pagamento=falhou`,
@@ -58,6 +49,7 @@ export default async function handler(req, res) {
         },
         auto_return: "approved",
         statement_descriptor: "MUNDO DOS BLOCOS",
+        notification_url: `${origem}/api/webhook-mp`,
       },
     });
 

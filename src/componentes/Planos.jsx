@@ -20,8 +20,8 @@ function Plano({ p }) {
   const [erro, setErro] = useState(false);
   const economia = p.precoDe - p.preco;
   const capas = p.destaque
-    ? ["/assets/completo.png"]
-    : ["/assets/portugues.png", "/assets/matematica.png"];
+    ? ["/assets/completo.webp"]
+    : ["/assets/portugues.webp", "/assets/matematica.webp"];
 
   async function aoClicar() {
     setErro(false);
