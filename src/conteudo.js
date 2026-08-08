@@ -7,7 +7,7 @@
 
 export const PRODUTO = {
   nome: "Mundo dos Blocos",
-  subtitulo: "Português + Matemática",
+  subtitulo: "Português e Matemática",
   // ⚠️ REVISAR: usamos "jogos de blocos" em vez de "Minecraft"/"Roblox" no texto
   // do produto. Os nomes são marcas registradas da Mojang/Microsoft e da Roblox
   // Corp — usá-los no nome do produto ou nos anúncios é risco real de takedown
@@ -146,7 +146,7 @@ export const MODULOS = {
 export const BONUS = {
   titulo: "E ainda vem junto",
   subtitulo:
-    "Quatro materiais extras que transformam a atividade solta em rotina de verdade.",
+    "Cinco materiais extras que transformam a atividade solta em rotina de verdade.",
   itens: [
     {
       id: "mapa",
@@ -179,6 +179,14 @@ export const BONUS = {
       texto:
         "Roteiro pronto de 8 semanas. Você olha o dia e sabe qual atividade aplicar — sem improviso e sem culpa.",
       imagem: "plano.webp",
+    },
+    {
+      id: "bonecos",
+      numero: 5,
+      titulo: "Bonecos de Papel",
+      texto:
+        "5 personagens do elenco para recortar e montar. Vira brincadeira de mesa depois da atividade.",
+      imagem: "bonecos.webp",
     },
   ],
 };
@@ -233,12 +241,13 @@ export const PLANOS = {
         { texto: "Cartões de Recompensa", tem: false },
         { texto: "Guia Rápido dos Pais", tem: false },
         { texto: "Plano de Estudos Semanal", tem: false },
+        { texto: "Bonecos de Papel", tem: false },
       ],
     },
     {
       id: "completo",
       nome: "Pacote completo",
-      descricao: "Tudo do material + os 4 bônus. É o que quase todo mundo leva.",
+      descricao: "Tudo do material + os 5 bônus. É o que quase todo mundo leva.",
       precoDe: 97.9,
       preco: 34.9,
       parcelas: "ou 3x de R$ 12,42",
@@ -253,6 +262,7 @@ export const PLANOS = {
         { texto: "30 Cartões de Recompensa", tem: true },
         { texto: "Guia Rápido dos Pais", tem: true },
         { texto: "Plano de Estudos Semanal", tem: true },
+        { texto: "Bonecos de Papel", tem: true },
       ],
     },
   ],
@@ -311,8 +321,8 @@ export const FAQ = {
 export const RODAPE = {
   // ⚠️ REVISAR: preencher com seus dados reais antes de publicar.
   // E-mail de suporte é obrigatório; CNPJ é obrigatório se você emitir nota.
-  emailSuporte: "SEU-EMAIL@dominio.com.br",
-  razaoSocial: "SEU NOME OU RAZÃO SOCIAL",
+  emailSuporte: "conhecimentodigital67@outlook.com",
+  razaoSocial: "Conhecimento Digital",
   cnpj: "",
   disclaimer:
     "Material educativo independente, com arte original. Não possui vínculo, patrocínio ou aprovação da Mojang Studios, Microsoft Corporation ou Roblox Corporation. As marcas citadas pertencem aos seus respectivos titulares.",

@@ -84,7 +84,7 @@ export default function Hero() {
         </div>
 
         <div className="relative">
-          <div className="painel-rpg relative p-4 sm:p-5">
+          <div className="painel-rpg relative overflow-hidden p-4 sm:p-5">
             {/* Selo do total de atividades, sobre o emblema do mundo */}
             <div className="bloco absolute -top-5 -right-4 z-10 flex size-24 rotate-6 flex-col items-center justify-center rounded-full text-papel sm:size-28">
               <img
@@ -101,18 +101,18 @@ export default function Hero() {
               </span>
             </div>
 
-            <div className="grid grid-cols-3 gap-3">
-              <img
-                src="/assets/completo.webp"
-                alt="Capa do pacote completo Mundo dos Blocos"
-                className="col-span-3 w-full rounded-md border-2 border-ambar/70 shadow-lg"
-                width="1200"
-                height="1600"
-              />
+            <img
+              src="/assets/completo.webp"
+              alt="Capa do pacote completo Mundo dos Blocos"
+              className="w-full rounded-md border-2 border-ambar/70 shadow-lg"
+              width="1200"
+              height="1600"
+            />
+            <div className="mt-3 grid grid-cols-2 gap-3">
               <img
                 src="/assets/portugues.webp"
                 alt="Capa do livro Português no Mundo dos Blocos"
-                className="rounded-sm border-2 border-ambar/50 shadow-md"
+                className="w-full rounded-sm border-2 border-ambar/50 shadow-md"
                 width="600"
                 height="800"
                 loading="lazy"
@@ -120,24 +120,11 @@ export default function Hero() {
               <img
                 src="/assets/matematica.webp"
                 alt="Capa do livro Matemática no Mundo dos Blocos"
-                className="rounded-sm border-2 border-ambar/50 shadow-md"
+                className="w-full rounded-sm border-2 border-ambar/50 shadow-md"
                 width="600"
                 height="800"
                 loading="lazy"
               />
-              <div className="flex items-end justify-center -space-x-3">
-                {["explorador", "leitora"].map((p) => (
-                  <img
-                    key={p}
-                    src={`/assets/${p}.webp`}
-                    alt=""
-                    className="h-full w-auto drop-shadow-md"
-                    width="2048"
-                    height="3072"
-                    loading="lazy"
-                  />
-                ))}
-              </div>
             </div>
 
             <p className="mt-4 text-center text-sm font-semibold text-papel/85">

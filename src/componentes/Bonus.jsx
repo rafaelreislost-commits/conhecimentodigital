@@ -1,16 +1,6 @@
 import { BONUS } from "../conteudo";
 import { Etiqueta, Secao, Subtitulo, Titulo } from "./Ui";
 
-// Os PDFs de bônus ainda não têm arte própria pronta — por enquanto, cada
-// bônus ganha um personagem do elenco como apoio visual, sobre um painel
-// dourado estilo RPG que já usa a nova linguagem visual do produto.
-const PERSONAGEM_POR_BONUS = {
-  mapa: "explorador",
-  cartoes: "construtora",
-  guia: "leitora",
-  plano: "leitor",
-};
-
 export default function Bonus() {
   return (
     <Secao id="bonus" className="relative overflow-hidden border-b-3 border-tinta bg-tinta">
@@ -34,21 +24,18 @@ export default function Bonus() {
           {BONUS.subtitulo}
         </p>
 
-        <div className="mt-12 grid gap-6 sm:grid-cols-2">
+        <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           {BONUS.itens.map((b) => (
-            <article
-              key={b.id}
-              className="painel-rpg relative flex gap-5 overflow-visible p-6 pt-8"
-            >
+            <article key={b.id} className="painel-rpg flex flex-col overflow-hidden p-4">
               <img
-                src={`/assets/${PERSONAGEM_POR_BONUS[b.id] ?? "mascote"}.webp`}
-                alt=""
-                className="absolute -top-8 -left-2 h-28 w-auto shrink-0 drop-shadow-lg sm:h-32"
-                width="2048"
-                height="3072"
+                src={`/assets/${b.imagem}`}
+                alt={b.titulo}
+                className="aspect-square w-full rounded-sm border-2 border-ambar/50 object-cover shadow-md"
+                width="700"
+                height="700"
                 loading="lazy"
               />
-              <div className="ml-24 sm:ml-28">
+              <div className="mt-4">
                 <span className="text-xs font-extrabold tracking-wider text-ambar uppercase">
                   Extra {b.numero}
                 </span>

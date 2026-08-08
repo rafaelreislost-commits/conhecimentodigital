@@ -32,8 +32,11 @@ export default function CtaFinal() {
           ))}
         </div>
 
-        <h2 className="titulo-3d text-4xl leading-tight text-balance sm:text-5xl">
-          Amanhã ele pode estar na mesa da cozinha, resolvendo
+        <h2
+          className="text-3xl leading-tight font-extrabold text-balance text-papel sm:text-4xl"
+          style={{ fontFamily: "var(--font-body)" }}
+        >
+          Amanhã ele pode estar na mesa ou no quarto, resolvendo
         </h2>
         <p className="mt-5 max-w-xl text-lg leading-relaxed text-papel/90 text-pretty">
           {PRODUTO.totalAtividades} atividades prontas para imprimir hoje mesmo. Por
