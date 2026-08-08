@@ -34,6 +34,7 @@ export const PLANOS = {
       arquivo("mapa", "Mapa de Progresso do Aventureiro.pdf"),
       arquivo("cards", "Cards de Recompensa.pdf"),
       arquivo("guia", "Guia Rápido para os Pais.pdf"),
+      arquivo("plano", "Plano de Estudos Semanal.pdf"),
       arquivo("bonecos", "Bonecos de Papel.pdf"),
     ],
   },

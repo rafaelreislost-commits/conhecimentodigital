@@ -18,6 +18,7 @@ const MATERIAIS = [
   { chave: "mapa", arquivo: "Mapa-de-Progresso-do-Aventureiro.pdf" },
   { chave: "cards", arquivo: "Cards-de-Recompensa.pdf" },
   { chave: "guia", arquivo: "Guia-Rapido-para-os-Pais.pdf" },
+  { chave: "plano", arquivo: "Plano-de-Estudos-Semanal.pdf" },
   { chave: "bonecos", arquivo: "Bonecos-de-Papel.pdf" },
 ];
 

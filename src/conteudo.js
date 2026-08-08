@@ -179,7 +179,7 @@ export const BONUS = {
       titulo: "Plano de Estudos Semanal",
       texto:
         "Roteiro pronto de 8 semanas. Você olha o dia e sabe qual atividade aplicar — sem improviso e sem culpa.",
-      imagem: "plano.webp",
+      imagem: "real-plano.webp",
     },
     {
       id: "bonecos",
