@@ -7,20 +7,30 @@ export default function Rodape() {
     <footer className="bg-tinta px-5 py-14 text-papel/70 sm:px-8">
       <div className="mx-auto max-w-6xl">
         <div className="flex flex-col gap-8 md:flex-row md:justify-between">
-          <div className="max-w-sm">
-            <p className="font-display text-xl font-extrabold text-papel">
-              {PRODUTO.nome}
-            </p>
-            <p className="mt-2 text-sm">{PRODUTO.subtitulo}</p>
-            <p className="mt-4 text-sm">
-              Suporte:{" "}
-              <a
-                href={`mailto:${RODAPE.emailSuporte}`}
-                className="font-semibold text-papel underline underline-offset-2"
-              >
-                {RODAPE.emailSuporte}
-              </a>
-            </p>
+          <div className="flex max-w-sm gap-4">
+            <img
+              src="/assets/selo-conhecimento-digital.webp"
+              alt=""
+              className="size-14 shrink-0 rounded-full border-2 border-ambar/50"
+              width="200"
+              height="200"
+              aria-hidden="true"
+            />
+            <div>
+              <p className="font-display text-xl font-extrabold text-papel">
+                {PRODUTO.nome}
+              </p>
+              <p className="mt-1 text-sm">{PRODUTO.subtitulo}</p>
+              <p className="mt-3 text-sm">
+                {RODAPE.razaoSocial} &middot;{" "}
+                <a
+                  href={`mailto:${RODAPE.emailSuporte}`}
+                  className="font-semibold text-papel underline underline-offset-2"
+                >
+                  {RODAPE.emailSuporte}
+                </a>
+              </p>
+            </div>
           </div>
 
           <nav className="text-sm">

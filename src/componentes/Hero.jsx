@@ -31,11 +31,11 @@ export default function Hero() {
       <div className="relative mx-auto grid max-w-6xl items-center gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:gap-14 lg:py-24">
         <div>
           <img
-            src="/assets/logo.svg"
+            src="/assets/logo-mundo-dos-blocos.webp"
             alt={PRODUTO.nome}
-            className="mb-7 h-16 w-auto drop-shadow-[0_3px_10px_rgba(0,0,0,0.85)] sm:h-20"
-            width="480"
-            height="120"
+            className="mb-7 h-14 w-auto rounded-md shadow-lg sm:h-16"
+            width="900"
+            height="502"
           />
 
           <p className="bloco-sm mb-5 inline-block rounded-sm bg-ambar px-3 py-1.5 text-xs font-extrabold tracking-wide text-tinta uppercase">
