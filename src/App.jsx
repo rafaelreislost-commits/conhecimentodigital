@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { iniciarPixel } from "./lib/pixel";
+import Obrigado from "./paginas/Obrigado";
 
 import Topo from "./componentes/Topo";
 import Hero from "./componentes/Hero";
@@ -17,6 +18,10 @@ import BarraMobile from "./componentes/BarraMobile";
 
 export default function App() {
   useEffect(iniciarPixel, []);
+
+  if (window.location.pathname === "/obrigado") {
+    return <Obrigado />;
+  }
 
   return (
     <>

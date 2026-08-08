@@ -38,7 +38,7 @@ export const HERO = {
     "PDF imprimível, acesso vitalício",
     "Alinhado à BNCC",
     "Gabarito e guia dos pais inclusos",
-    "Garantia de 7 dias",
+    "Entrega automática por e-mail",
   ],
 };
 
@@ -259,14 +259,14 @@ export const PLANOS = {
 };
 
 export const GARANTIA = {
-  titulo: "7 dias para testar sem risco",
-  // ⚠️ REVISAR: 7 dias é o mínimo legal (CDC art. 49) para compra online.
-  // A referência que você mandou promete 15 — se quiser igualar, mude aqui
-  // E no texto dos Termos de Uso. Só prometa o que você vai honrar.
+  titulo: "Compra 100% segura",
+  // ⚠️ REVISAR: mesmo sem anunciar prazo de reembolso aqui, o direito de
+  // arrependimento de 7 dias (CDC art. 49) continua valendo por lei pra
+  // qualquer compra online — não anunciar não remove a obrigação legal.
   texto: [
-    "Baixe, imprima e faça as atividades com seu filho por 7 dias completos.",
-    "Se não combinar com a rotina de vocês, responda o e-mail da compra pedindo o reembolso. Devolvo o valor integral.",
-    "Sem formulário, sem justificativa, sem enrolação.",
+    "Pagamento processado pelo Mercado Pago, com Pix, cartão ou boleto.",
+    "Acesso enviado por e-mail assim que o pagamento é aprovado, com link de download vitalício.",
+    "Dúvidas ou problemas com o pedido? É só responder o e-mail da compra.",
   ],
 };
 
@@ -303,7 +303,7 @@ export const FAQ = {
     },
     {
       p: "E se eu não gostar?",
-      r: "Você tem 7 dias para pedir reembolso integral, respondendo o e-mail da compra. Sem precisar justificar.",
+      r: "É só responder o e-mail da compra e explicar o que houve — a gente resolve. E como em toda compra online, você conta com o direito de arrependimento previsto no Código de Defesa do Consumidor.",
     },
   ],
 };

@@ -75,8 +75,20 @@ async function enviarEmailComMateriais({ email, plano }) {
   const resend = new Resend(process.env.RESEND_API_KEY);
   const remetente = process.env.EMAIL_REMETENTE || "Mundo dos Blocos <onboarding@resend.dev>";
 
-  const listaHtml = plano.arquivos
-    .map((a) => `<li style="margin-bottom:8px"><a href="${a.url}">${a.nome}</a></li>`)
+  const botoesHtml = plano.arquivos
+    .map(
+      (a) => `
+        <tr>
+          <td style="padding:6px 0">
+            <a href="${a.url}"
+               style="display:block;background:#FDF6E8;border:2px solid #2B2118;border-radius:8px;
+                      padding:14px 18px;text-decoration:none;color:#2B2118;font-weight:700;
+                      font-family:sans-serif;font-size:15px">
+              ⬇ ${a.nome}
+            </a>
+          </td>
+        </tr>`
+    )
     .join("");
 
   await resend.emails.send({
@@ -84,12 +96,39 @@ async function enviarEmailComMateriais({ email, plano }) {
     to: email,
     subject: "Seu material chegou! 🎮 Mundo dos Blocos",
     html: `
-      <div style="font-family:sans-serif;max-width:560px;margin:0 auto">
-        <h1 style="color:#2B2118">Seu material chegou!</h1>
-        <p>Obrigado por comprar o <strong>${plano.titulo}</strong>. Os arquivos estão prontos pra baixar e imprimir:</p>
-        <ul>${listaHtml}</ul>
-        <p style="color:#666;font-size:14px">
-          Guarde este e-mail — os links não expiram. Qualquer dúvida, é só responder esta mensagem.
+      <div style="font-family:sans-serif;max-width:560px;margin:0 auto;background:#ffffff">
+        <div style="background:#3E7A2B;padding:28px 24px;border-radius:12px 12px 0 0;text-align:center">
+          <h1 style="color:#FDF6E8;margin:0;font-size:24px">Mundo dos Blocos</h1>
+        </div>
+
+        <div style="padding:28px 24px;border:2px solid #2B2118;border-top:none;border-radius:0 0 12px 12px">
+          <h2 style="color:#2B2118;margin-top:0">Seu material chegou! 🎉</h2>
+          <p style="color:#2B2118;font-size:15px;line-height:1.6">
+            Obrigado por comprar o <strong>${plano.titulo}</strong>. Seus arquivos
+            já estão prontos — é só clicar em cada botão abaixo pra baixar:
+          </p>
+
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:20px 0">
+            ${botoesHtml}
+          </table>
+
+          <div style="background:#FDF6E8;border-radius:8px;padding:16px 18px;margin-top:8px">
+            <p style="color:#2B2118;font-size:13px;line-height:1.6;margin:0">
+              💡 <strong>Guarde este e-mail</strong> — os links são vitalícios, então
+              dá pra voltar aqui e baixar de novo sempre que precisar, em qualquer
+              aparelho.
+            </p>
+          </div>
+
+          <p style="color:#6b6b6b;font-size:13px;line-height:1.6;margin-top:20px">
+            Dúvidas, problema com algum arquivo, ou qualquer outra coisa? É só
+            responder este e-mail que a gente te ajuda.
+          </p>
+        </div>
+
+        <p style="color:#9AA0A6;font-size:12px;text-align:center;margin-top:16px">
+          Mundo dos Blocos — material educativo independente, sem vínculo com
+          Mojang, Microsoft ou Roblox Corporation.
         </p>
       </div>
     `,

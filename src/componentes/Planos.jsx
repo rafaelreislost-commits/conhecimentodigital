@@ -135,7 +135,38 @@ export default function Planos() {
         </div>
       </div>
 
-      <div className="mx-auto mt-14 grid max-w-4xl items-start gap-8 lg:grid-cols-2">
+      <div className="bloco mx-auto mt-10 flex max-w-3xl flex-col items-start gap-3 rounded-md bg-white p-6 sm:flex-row sm:items-center sm:gap-5 sm:p-7">
+        <div className="bloco-sm flex size-12 shrink-0 items-center justify-center rounded-full bg-grama text-papel">
+          <svg viewBox="0 0 24 24" className="size-6" aria-hidden="true">
+            <path
+              d="M3 7 12 13 21 7"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+            <rect
+              x="3"
+              y="5"
+              width="18"
+              height="14"
+              rx="2"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2.5"
+            />
+          </svg>
+        </div>
+        <p className="text-sm leading-relaxed font-semibold text-tinta/80 sm:text-base">
+          Assim que o pagamento é aprovado, você recebe um e-mail com todos os
+          links de download — funciona com Pix, cartão ou boleto. Guarda esse
+          e-mail: os links não expiram, então dá pra baixar de novo sempre
+          que precisar.
+        </p>
+      </div>
+
+      <div className="mx-auto mt-8 grid max-w-4xl items-start gap-8 lg:grid-cols-2">
         {PLANOS.itens.map((p) => (
           <Plano key={p.id} p={p} />
         ))}

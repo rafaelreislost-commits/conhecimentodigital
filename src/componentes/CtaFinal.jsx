@@ -45,7 +45,7 @@ export default function CtaFinal() {
         </Botao>
 
         <p className="mt-4 text-sm font-semibold text-papel/80">
-          Acesso imediato &middot; 7 dias de garantia &middot; sem assinatura
+          Acesso imediato &middot; entrega por e-mail &middot; sem assinatura
         </p>
       </div>
     </section>
