@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+@theme {
+  --color-grama: #5ba83f;
+  --color-grama-escuro: #3e7a2b;
+  --color-terra: #8b5e3c;
+  --color-terra-escuro: #5f3f27;
+  --color-pedra: #9aa0a6;
+  --color-pedra-escuro: #6b7075;
+  --color-ceu: #4fa3d9;
+  --color-ceu-escuro: #2c6e9b;
+  --color-ambar: #f2a93b;
+  --color-ambar-escuro: #d18c25;
+  --color-energia: #d9483b;
+  --color-cristal: #7b5ea7;
+  --color-papel: #fdf6e8;
+  --color-tinta: #2b2118;
+
+  --font-display: "Pixelify Sans", system-ui, sans-serif;
+  --font-body: "Nunito", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-papel);
+    color: var(--color-tinta);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+}
+
+@layer components {
+  /* Bloco: caixa cúbica base — contorno grosso + "profundidade" sólida embaixo */
+  .bloco {
+    border: 3px solid var(--color-tinta);
+    box-shadow: 0 6px 0 0 var(--color-tinta);
+  }
+
+  .bloco-sm {
+    border: 2px solid var(--color-tinta);
+    box-shadow: 0 4px 0 0 var(--color-tinta);
+  }
+
+  /* Botão que afunda ao clicar, como apertar um bloco */
+  .btn-bloco {
+    border: 3px solid var(--color-tinta);
+    box-shadow: 0 6px 0 0 var(--color-tinta);
+    transition:
+      transform 0.08s ease,
+      box-shadow 0.08s ease;
+  }
+
+  .btn-bloco:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 0 0 var(--color-tinta);
+  }
+
+  .btn-bloco:active {
+    transform: translateY(6px);
+    box-shadow: 0 0 0 0 var(--color-tinta);
+  }
+
+  /* Painel dourado estilo RPG — usado sobre as cenas ilustradas ricas */
+  .painel-rpg {
+    border: 3px solid #6b4a1e;
+    border-radius: 0.75rem;
+    background:
+      linear-gradient(180deg, rgba(45, 30, 12, 0.92) 0%, rgba(28, 18, 8, 0.94) 100%);
+    box-shadow:
+      inset 0 0 0 2px rgba(242, 169, 59, 0.55),
+      inset 0 2px 0 0 rgba(255, 224, 156, 0.35),
+      0 10px 0 0 rgba(0, 0, 0, 0.35);
+  }
+
+  /* Título com relevo 3D extrudado, no espírito das capas dos livros */
+  .titulo-3d {
+    color: var(--color-papel);
+    text-shadow:
+      1px 1px 0 #6b4a1e,
+      2px 2px 0 #6b4a1e,
+      3px 3px 0 #6b4a1e,
+      4px 4px 0 #6b4a1e,
+      5px 5px 10px rgba(0, 0, 0, 0.45);
+  }
+
+  .titulo-3d-escuro {
+    color: var(--color-tinta);
+    text-shadow:
+      1px 1px 0 rgba(242, 169, 59, 0.9),
+      2px 2px 0 rgba(242, 169, 59, 0.9),
+      3px 3px 6px rgba(0, 0, 0, 0.25);
+  }
+
+  /* Cartão com fundo sólido para blocos de texto legíveis sobre arte rica */
+  .cartao-legivel {
+    border: 3px solid var(--color-tinta);
+    border-radius: 0.75rem;
+    background: var(--color-papel);
+    box-shadow: 0 6px 0 0 var(--color-tinta);
+  }
+}
+
+/* Respeita quem pediu menos movimento */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

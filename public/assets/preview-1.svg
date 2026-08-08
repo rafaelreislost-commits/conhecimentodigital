@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="594" viewBox="0 0 420 594">
+ <defs><filter id="s" x="-20%" y="-20%" width="140%" height="150%"><feDropShadow dx="0" dy="5" stdDeviation="5" flood-color="#2B2118" flood-opacity=".18"/></filter></defs>
+ <rect x="13" y="9" width="394" height="570" fill="#FDF6E8" stroke="#2B2118" stroke-width="3" filter="url(#s)"/>
+ <path d="M14 10h392v72H14z" fill="#5BA83F"/><path d="M14 68h392v14H14z" fill="#3E7A2B"/>
+ <g fill="#FDF6E8"><rect x="39" y="29" width="190" height="10"/><rect x="39" y="48" width="125" height="7"/></g>
+ <g stroke="#2B2118" stroke-width="3"><path d="M344 24l22 12-22 12-22-12z" fill="#F2A93B"/><path d="M322 36v22l22 12V48z" fill="#8B5E3C"/><path d="M344 48v22l22-12V36z" fill="#5F3F27"/></g>
+ <rect x="32" y="105" width="242" height="242" fill="#FDF6E8" stroke="#2B2118" stroke-width="3"/>
+ <g stroke="#6B7075" stroke-width="1.4"><path d="M56.2 105v242M80.4 105v242M104.6 105v242M128.8 105v242M153 105v242M177.2 105v242M201.4 105v242M225.6 105v242M249.8 105v242"/><path d="M32 129.2h242M32 153.4h242M32 177.6h242M32 201.8h242M32 226h242M32 250.2h242M32 274.4h242M32 298.6h242M32 322.8h242"/></g>
+ <g fill="#2B2118" opacity=".78">
+  <path d="M39 112h10v4h-3v9h-4v-9h-3zM63 112h10v4h-6v3h5v3h-5v3h6v-3h3v3h-3v3H63zM87 112h4v13h7v3H87zM111 112h10v4h-6v3h5v3h-5v6h-4z"/>
+  <path d="M39 137h4v5h6v-5h4v13h-4v-5h-6v5h-4zM63 137h10v3h-6v3h5v3h-5v4h-4zM87 137h4v13h-4zM111 137h10v4h-3v9h-4v-9h-3z"/>
+  <path d="M136 161h10v4h-6v3h5v3h-5v3h6v-3h3v3h-3v3h-10zM160 161h4v13h7v3h-11zM184 161h10v4h-6v3h5v3h-5v6h-4z"/>
+ </g>
+ <g stroke="#2B2118" stroke-width="2"><rect x="294" y="108" width="94" height="31" fill="#4FA3D9"/><path d="M305 120h58M305 128h42" stroke="#FDF6E8" stroke-width="5"/>
+ <rect x="294" y="151" width="94" height="176" fill="none"/><g fill="none" stroke="#3E7A2B" stroke-width="4"><path d="M306 170h51M306 193h67M306 216h44M306 239h60M306 262h48M306 285h65M306 308h39"/></g></g>
+ <path d="M42 374h336" stroke="#9AA0A6" stroke-width="2" stroke-dasharray="7 6"/>
+ <g fill="none" stroke="#2C6E9B" stroke-width="3"><path d="M48 409h128M48 438h128M48 467h128M218 409h146M218 438h146M218 467h146"/></g>
+ <g stroke="#2B2118" stroke-width="2"><path d="M48 507l14-8 14 8-14 8z" fill="#5BA83F"/><path d="M48 507v13l14 8v-13z" fill="#8B5E3C"/><path d="M62 515v13l14-8v-13z" fill="#5F3F27"/></g>
+ <path d="M89 518h271" stroke="#9AA0A6" stroke-width="3"/>
+</svg>

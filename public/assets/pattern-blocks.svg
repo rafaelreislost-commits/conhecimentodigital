@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="240" height="240" viewBox="0 0 240 240" role="img" aria-labelledby="title desc">
+  <title id="title">Padrão suave de blocos</title><desc id="desc">Fundo creme repetível com pequenos cubos isométricos translúcidos.</desc>
+  <rect width="240" height="240" fill="#FDF6E8"/>
+  <g opacity=".1" stroke="#2B2118" stroke-width="2" stroke-linejoin="bevel">
+    <g transform="translate(-15 -9)"><path d="m0 12 20-12 20 12-20 12Z" fill="#5BA83F"/><path d="m0 12 20 12v24L0 36Z" fill="#3E7A2B"/><path d="m40 12-20 12v24l20-12Z" fill="#8B5E3C"/></g>
+    <g transform="translate(225 -9)"><path d="m0 12 20-12 20 12-20 12Z" fill="#5BA83F"/><path d="m0 12 20 12v24L0 36Z" fill="#3E7A2B"/><path d="m40 12-20 12v24l20-12Z" fill="#8B5E3C"/></g>
+    <g transform="translate(-15 231)"><path d="m0 12 20-12 20 12-20 12Z" fill="#5BA83F"/><path d="m0 12 20 12v24L0 36Z" fill="#3E7A2B"/><path d="m40 12-20 12v24l20-12Z" fill="#8B5E3C"/></g>
+    <g transform="translate(225 231)"><path d="m0 12 20-12 20 12-20 12Z" fill="#5BA83F"/><path d="m0 12 20 12v24L0 36Z" fill="#3E7A2B"/><path d="m40 12-20 12v24l20-12Z" fill="#8B5E3C"/></g>
+    <g transform="translate(102 101)"><path d="m0 12 20-12 20 12-20 12Z" fill="#4FA3D9"/><path d="m0 12 20 12v24L0 36Z" fill="#2C6E9B"/><path d="m40 12-20 12v24l20-12Z" fill="#6B7075"/></g>
+    <g transform="translate(44 164) scale(.7)"><path d="m0 12 20-12 20 12-20 12Z" fill="#F2A93B"/><path d="m0 12 20 12v24L0 36Z" fill="#8B5E3C"/><path d="m40 12-20 12v24l20-12Z" fill="#5F3F27"/></g>
+    <g transform="translate(174 49) scale(.7)"><path d="m0 12 20-12 20 12-20 12Z" fill="#7B5EA7"/><path d="m0 12 20 12v24L0 36Z" fill="#2C6E9B"/><path d="m40 12-20 12v24l20-12Z" fill="#6B7075"/></g>
+  </g>
+</svg>
