@@ -14,13 +14,13 @@ export default function Obrigado() {
       />
 
       <h1 className="titulo-3d mt-6 text-3xl leading-tight sm:text-4xl">
-        Pagamento aprovado!
+        Pagamento feito com sucesso! ✅
       </h1>
 
       <div className="bloco mt-8 max-w-xl rounded-md bg-white p-6 sm:p-8">
         <p className="text-lg leading-relaxed font-semibold text-tinta/85">
-          Você vai receber um e-mail em instantes com os links pra baixar
-          todo o material — o mesmo e-mail que você usou no pagamento.
+          O material já está a caminho do seu e-mail — o mesmo que você
+          usou no pagamento.
         </p>
         <p className="mt-4 text-sm leading-relaxed text-tinta/65">
           Não achou? Confere a caixa de spam/promoções. Se em 15 minutos

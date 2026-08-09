@@ -120,6 +120,10 @@ function Plano({ p }) {
       <p className="mt-3 text-center text-xs font-semibold text-tinta/60">
         Pagamento único &middot; Pix ou cartão &middot; acesso imediato
       </p>
+      <p className="mt-2 text-center text-xs font-semibold text-grama">
+        ✅ Pagou no Pix e a tela não voltou sozinha? Sem problema — assim
+        que aprovar, o material chega no seu e-mail.
+      </p>
     </article>
   );
 }
