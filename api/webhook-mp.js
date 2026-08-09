@@ -194,6 +194,31 @@ async function enviarEmailComMateriais({ email, plano }) {
       </div>
     `;
 
+  // Prioridade 1: SendGrid com remetente único verificado — não exige
+  // domínio próprio, só confirmar um link de e-mail (Settings → Sender
+  // Authentication → Verify a Single Sender no painel do SendGrid).
+  if (process.env.SENDGRID_API_KEY) {
+    const resposta = await fetch("https://api.sendgrid.com/v3/mail/send", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${process.env.SENDGRID_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        personalizations: [{ to: [{ email }] }],
+        from: { email: process.env.SENDGRID_FROM || process.env.SMTP_USER, name: "Mundo dos Blocos" },
+        reply_to: { email: replyTo },
+        subject: assunto,
+        content: [{ type: "text/html", value: html }],
+      }),
+    });
+    if (!resposta.ok) {
+      const corpo = await resposta.text();
+      throw new Error(`SendGrid recusou o envio (status ${resposta.status}): ${corpo}`);
+    }
+    return;
+  }
+
   if (process.env.SMTP_USER && process.env.SMTP_PASS) {
     const transportador = nodemailer.createTransport({
       host: process.env.SMTP_HOST || "smtp-mail.outlook.com",
