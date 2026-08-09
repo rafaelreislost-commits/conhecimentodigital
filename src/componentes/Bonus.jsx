@@ -19,7 +19,7 @@ export default function Bonus() {
         <Etiqueta cor="bg-energia">
           <span className="text-papel">Incluso no pacote completo</span>
         </Etiqueta>
-        <Titulo className="titulo-3d mt-4">{BONUS.titulo}</Titulo>
+        <Titulo className="titulo-claro mt-4">{BONUS.titulo}</Titulo>
         <p className="mt-4 max-w-2xl text-lg leading-relaxed text-papel/80 text-pretty">
           {BONUS.subtitulo}
         </p>
@@ -56,7 +56,7 @@ export default function Bonus() {
                 <span className="text-xs font-extrabold tracking-wider text-ambar uppercase">
                   Extra {b.numero}
                 </span>
-                <h3 className="titulo-3d mt-1 text-xl">{b.titulo}</h3>
+                <h3 className="titulo-claro mt-1 text-xl">{b.titulo}</h3>
                 <p className="mt-2 leading-relaxed text-papel/85">{b.texto}</p>
               </div>
             </article>

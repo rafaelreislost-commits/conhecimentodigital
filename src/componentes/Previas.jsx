@@ -25,7 +25,7 @@ export default function Previas() {
       <div className="flex flex-wrap items-end justify-between gap-6">
         <div>
           <Etiqueta cor="bg-ceu">Prévia real</Etiqueta>
-          <Titulo className="titulo-3d mt-4">
+          <Titulo className="titulo-claro mt-4">
             Veja as páginas que você vai imprimir
           </Titulo>
           <p className="mt-4 max-w-2xl text-lg leading-relaxed text-papel/80 text-pretty">

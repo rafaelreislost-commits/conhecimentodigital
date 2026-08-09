@@ -96,6 +96,12 @@
       5px 5px 10px rgba(0, 0, 0, 0.45);
   }
 
+  /* Mesma cor clara do titulo-3d, mas sem sombra — mais legível quando o
+     fundo já é sólido (não precisa de relevo pra se destacar). */
+  .titulo-claro {
+    color: var(--color-papel);
+  }
+
   .titulo-3d-escuro {
     color: var(--color-tinta);
     text-shadow:

@@ -33,9 +33,9 @@ export default function Hero() {
           <img
             src="/assets/logo-mundo-dos-blocos.webp"
             alt={PRODUTO.nome}
-            className="mb-7 h-32 w-auto max-w-full rounded-md shadow-xl sm:h-40 lg:h-44"
-            width="900"
-            height="502"
+            className="mb-7 h-32 w-auto max-w-full drop-shadow-[0_6px_16px_rgba(0,0,0,0.7)] sm:h-40 lg:h-44"
+            width="1528"
+            height="582"
           />
 
           <p className="bloco-sm mb-5 inline-block rounded-sm bg-ambar px-3 py-1.5 text-xs font-extrabold tracking-wide text-tinta uppercase">
