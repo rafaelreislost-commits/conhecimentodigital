@@ -98,6 +98,7 @@ async function enviarEmailComMateriais({ email, plano }) {
   await resend.emails.send({
     from: remetente,
     to: email,
+    replyTo: process.env.EMAIL_RESPOSTA || "conhecimentodigital67@outlook.com",
     subject: "Seu material chegou! 🎮 Mundo dos Blocos",
     html: `
       <div style="font-family:sans-serif;max-width:560px;margin:0 auto;background:#ffffff">
