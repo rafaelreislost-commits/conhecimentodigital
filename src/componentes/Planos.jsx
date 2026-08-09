@@ -3,8 +3,14 @@ import { PLANOS } from "../conteudo";
 import { rastrearCheckout } from "../lib/pixel";
 import { Etiqueta, Marcador, Secao, Subtitulo, Titulo, precoBR } from "./Ui";
 
-async function iniciarPagamento(p) {
-  const resposta = await fetch(`/api/criar-pagamento?plano=${p.id}`);
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+async function iniciarPagamento(p, email) {
+  const resposta = await fetch("/api/criar-pagamento", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ plano: p.id, email }),
+  });
   if (!resposta.ok) {
     throw new Error("Falha ao criar pagamento");
   }
@@ -16,6 +22,7 @@ async function iniciarPagamento(p) {
 }
 
 function Plano({ p }) {
+  const [email, setEmail] = useState("");
   const [carregando, setCarregando] = useState(false);
   const [erro, setErro] = useState(false);
   const economia = p.precoDe - p.preco;
@@ -25,12 +32,16 @@ function Plano({ p }) {
 
   async function aoClicar() {
     setErro(false);
+    if (!EMAIL_REGEX.test(email.trim())) {
+      setErro("email");
+      return;
+    }
     setCarregando(true);
     rastrearCheckout(p);
     try {
-      await iniciarPagamento(p);
+      await iniciarPagamento(p, email.trim());
     } catch {
-      setErro(true);
+      setErro("pagamento");
       setCarregando(false);
     }
   }
@@ -96,11 +107,29 @@ function Plano({ p }) {
         ))}
       </ul>
 
+      <label className="mt-8 block text-left text-xs font-bold text-tinta/70">
+        Seu melhor e-mail (é pra onde o material vai)
+        <input
+          type="email"
+          inputMode="email"
+          autoComplete="email"
+          value={email}
+          onChange={(e) => {
+            setEmail(e.target.value);
+            if (erro === "email") setErro(false);
+          }}
+          placeholder="seuemail@exemplo.com"
+          className={`bloco-sm mt-1.5 block w-full rounded-md border-2 px-4 py-3 text-sm font-semibold text-tinta focus:outline-none ${
+            erro === "email" ? "border-energia" : "border-tinta"
+          }`}
+        />
+      </label>
+
       <button
         type="button"
         onClick={aoClicar}
         disabled={carregando}
-        className={`btn-bloco mt-8 block rounded-md px-6 py-4 text-center font-display text-lg font-extrabold disabled:cursor-wait disabled:opacity-70 ${
+        className={`btn-bloco mt-3 block rounded-md px-6 py-4 text-center font-display text-lg font-extrabold disabled:cursor-wait disabled:opacity-70 ${
           p.destaque ? "bg-ambar" : "bg-white"
         }`}
       >
@@ -111,7 +140,12 @@ function Plano({ p }) {
             : "Quero só o material"}
       </button>
 
-      {erro && (
+      {erro === "email" && (
+        <p className="mt-2 text-center text-xs font-bold text-energia">
+          Digita um e-mail válido pra gente saber pra onde mandar o material.
+        </p>
+      )}
+      {erro === "pagamento" && (
         <p className="mt-2 text-center text-xs font-bold text-energia">
           Não foi possível abrir o pagamento. Tente novamente.
         </p>

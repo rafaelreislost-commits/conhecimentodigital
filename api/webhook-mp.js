@@ -48,10 +48,16 @@ export default async function handler(req, res) {
 
     const planoId = pagamento.external_reference;
     const plano = PLANOS[planoId];
-    const emailCliente = pagamento.payer?.email;
+    // pagamento.payer?.email costuma vir mascarado ("XXXXXXXXXXX") pela
+    // política de privacidade do Mercado Pago — o valor confiável é o que
+    // a gente mesmo capturou no site e gravou em metadata antes do
+    // redirect (ver criar-pagamento.js). payer.email fica só de fallback
+    // para pagamentos antigos, de antes dessa mudança.
+    const emailCliente = pagamento.metadata?.email_comprador || pagamento.payer?.email;
+    const emailValido = typeof emailCliente === "string" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailCliente);
 
-    if (!plano || !emailCliente) {
-      console.error("Pagamento aprovado sem plano ou e-mail reconhecível", {
+    if (!plano || !emailValido) {
+      console.error("Pagamento aprovado sem plano ou e-mail válido", {
         paymentId,
         planoId,
         emailCliente,

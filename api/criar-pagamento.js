@@ -18,6 +18,16 @@ export default async function handler(req, res) {
     return res.status(400).json({ erro: "Plano inválido" });
   }
 
+  // O Mercado Pago mascara payer.email na API de consulta ("XXXXXXXXXXX")
+  // por privacidade — não dá pra confiar nele pra entrega. Por isso o
+  // e-mail é capturado aqui, no nosso site, antes do redirect, e guardado
+  // em metadata pro webhook usar depois (ver enviarEmailComMateriais).
+  const email = req.method === "GET" ? req.query.email : req.body?.email;
+  const emailValido = typeof email === "string" && /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+  if (!emailValido) {
+    return res.status(400).json({ erro: "E-mail inválido" });
+  }
+
   const accessToken = process.env.MP_ACCESS_TOKEN;
   if (!accessToken) {
     return res.status(500).json({ erro: "MP_ACCESS_TOKEN não configurado no servidor" });
@@ -42,6 +52,8 @@ export default async function handler(req, res) {
         ],
         // Identifica o plano comprado para o webhook, sem depender do item.
         external_reference: planoId,
+        payer: { email },
+        metadata: { email_comprador: email },
         back_urls: {
           success: `${origem}/obrigado`,
           failure: `${origem}/?pagamento=falhou`,
