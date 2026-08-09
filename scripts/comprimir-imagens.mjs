@@ -27,6 +27,12 @@ const REGRAS = [
 const NAO_CONVERTER = new Set(["hero-mockup"]); // não é mais usado no código
 const MANTER_FORMATO = new Set(["og"]); // precisa ficar em JPG (compatibilidade com Facebook/WhatsApp/LinkedIn)
 
+function mantemFormato(nomeBase) {
+  // *-email.*: usados no HTML do e-mail transacional — Outlook e outros
+  // clientes não renderizam WebP, precisam continuar em PNG/JPG.
+  return MANTER_FORMATO.has(nomeBase) || nomeBase.endsWith("-email");
+}
+
 function larguraPara(nomeBase) {
   const regra = REGRAS.find((r) => r.arquivos.includes(nomeBase));
   return regra ? regra.largura : 900;
@@ -37,7 +43,7 @@ async function converterArquivo(caminho, pastaRelativa = "") {
   if (![".png", ".jpg", ".jpeg"].includes(ext)) return;
 
   const nomeBase = basename(caminho, ext);
-  if (MANTER_FORMATO.has(nomeBase)) return;
+  if (mantemFormato(nomeBase)) return;
   if (NAO_CONVERTER.has(nomeBase)) {
     await unlink(caminho);
     console.log(`removido (não usado): ${pastaRelativa}${nomeBase}${ext}`);

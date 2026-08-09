@@ -71,6 +71,10 @@ export default async function handler(req, res) {
   }
 }
 
+// Domínio público onde os assets do e-mail ficam hospedados (e-mail não
+// pode referenciar caminho relativo — precisa de URL absoluta).
+const SITE = "https://conhecimentodigital.vercel.app";
+
 async function enviarEmailComMateriais({ email, plano }) {
   const resend = new Resend(process.env.RESEND_API_KEY);
   const remetente = process.env.EMAIL_REMETENTE || "Mundo dos Blocos <onboarding@resend.dev>";
@@ -97,16 +101,26 @@ async function enviarEmailComMateriais({ email, plano }) {
     subject: "Seu material chegou! 🎮 Mundo dos Blocos",
     html: `
       <div style="font-family:sans-serif;max-width:560px;margin:0 auto;background:#ffffff">
-        <div style="background:#3E7A2B;padding:28px 24px;border-radius:12px 12px 0 0;text-align:center">
-          <h1 style="color:#FDF6E8;margin:0;font-size:24px">Mundo dos Blocos</h1>
+        <div style="background:#3E7A2B;padding:24px;border-radius:12px 12px 0 0;text-align:center">
+          <img src="${SITE}/assets/logo-email.png" alt="Mundo dos Blocos" width="220" style="max-width:220px;height:auto" />
         </div>
 
         <div style="padding:28px 24px;border:2px solid #2B2118;border-top:none;border-radius:0 0 12px 12px">
-          <h2 style="color:#2B2118;margin-top:0">Seu material chegou! 🎉</h2>
-          <p style="color:#2B2118;font-size:15px;line-height:1.6">
-            Obrigado por comprar o <strong>${plano.titulo}</strong>. Seus arquivos
-            já estão prontos — é só clicar em cada botão abaixo pra baixar:
-          </p>
+          <table role="presentation" width="100%" cellpadding="0" cellspacing="0">
+            <tr>
+              <td valign="top">
+                <h2 style="color:#2B2118;margin-top:0">Seu material chegou! 🎉</h2>
+                <p style="color:#2B2118;font-size:15px;line-height:1.6">
+                  Obrigado por comprar o <strong>${plano.titulo}</strong>. Seus arquivos
+                  já estão prontos — é só clicar em cada botão abaixo pra baixar:
+                </p>
+              </td>
+              <td width="80" valign="top" style="padding-left:12px">
+                <img src="${SITE}/assets/mascote-email.jpg" alt="" width="72"
+                     style="width:72px;height:auto;border-radius:8px" />
+              </td>
+            </tr>
+          </table>
 
           <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:20px 0">
             ${botoesHtml}
@@ -124,12 +138,35 @@ async function enviarEmailComMateriais({ email, plano }) {
             Dúvidas, problema com algum arquivo, ou qualquer outra coisa? É só
             responder este e-mail que a gente te ajuda.
           </p>
+
+          <table role="presentation" cellpadding="0" cellspacing="0" style="margin-top:20px">
+            <tr>
+              <td style="padding-right:10px">
+                <img src="${SITE}/assets/sticker-boneco-explorador-email.jpg" alt=""
+                     width="56" style="width:56px;height:auto;border-radius:6px;transform:rotate(-4deg)" />
+              </td>
+              <td>
+                <img src="${SITE}/assets/sticker-boneco-leitora-email.jpg" alt=""
+                     width="56" style="width:56px;height:auto;border-radius:6px;transform:rotate(4deg)" />
+              </td>
+            </tr>
+          </table>
         </div>
 
-        <p style="color:#9AA0A6;font-size:12px;text-align:center;margin-top:16px">
-          Mundo dos Blocos — material educativo independente, sem vínculo com
-          Mojang, Microsoft ou Roblox Corporation.
-        </p>
+        <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:16px">
+          <tr>
+            <td width="28" valign="middle">
+              <img src="${SITE}/assets/selo-conhecimento-digital-email.jpg" alt="Conhecimento Digital"
+                   width="24" style="width:24px;height:24px;border-radius:50%" />
+            </td>
+            <td valign="middle" style="padding-left:8px">
+              <p style="color:#9AA0A6;font-size:12px;margin:0">
+                Conhecimento Digital · Mundo dos Blocos — material educativo independente,
+                sem vínculo com Mojang, Microsoft ou Roblox Corporation.
+              </p>
+            </td>
+          </tr>
+        </table>
       </div>
     `,
   });
