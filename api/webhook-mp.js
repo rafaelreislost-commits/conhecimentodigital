@@ -9,6 +9,7 @@
 import { MercadoPagoConfig, Payment } from "mercadopago";
 import { Resend } from "resend";
 import { PLANOS, validarArquivos } from "./_planos.js";
+import { registrarVenda } from "./_db.js";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -61,6 +62,27 @@ export default async function handler(req, res) {
     }
 
     await enviarEmailComMateriais({ email: emailCliente, plano });
+
+    // Registro pro relatório de clientes — não deixa a falta de banco
+    // configurado quebrar a entrega do material (isso já aconteceu, é o
+    // que importa de verdade); só loga o erro.
+    try {
+      const nome = [pagamento.payer?.first_name, pagamento.payer?.last_name]
+        .filter(Boolean)
+        .join(" ");
+      await registrarVenda({
+        paymentId: String(paymentId),
+        plano: planoId,
+        email: emailCliente,
+        nomePagador: nome || null,
+        valor: pagamento.transaction_amount ?? plano.preco,
+        metodoPagamento: pagamento.payment_type_id || pagamento.payment_method_id || null,
+        status: pagamento.status,
+      });
+    } catch (erroDb) {
+      console.error("Falha ao registrar venda no banco (não afeta a entrega):", erroDb);
+    }
+
     return res.status(200).end();
   } catch (erro) {
     console.error("Erro processando webhook Mercado Pago:", erro);
