@@ -1,12 +1,17 @@
 // Vercel Serverless Function — recebida pelo Mercado Pago quando o status de
 // um pagamento muda. Se aprovado, manda por e-mail os links de download do
-// material comprado, via Resend.
+// material comprado, via SMTP (Outlook) — Resend fica só como fallback
+// caso SMTP_USER/SMTP_PASS não estejam configurados, mas não deve ser usado
+// em produção com o domínio de teste onboarding@resend.dev: ele só entrega
+// pra caixa da própria conta Resend, nunca pra cliente real (foi assim que
+// uma venda aprovada ficou sem o material chegar).
 //
 // Configurar essa URL no Mercado Pago não é necessário manualmente: ela é
 // enviada automaticamente em cada preferência criada (ver notification_url
 // em criar-pagamento.js). Env vars necessárias na Vercel:
-//   MP_ACCESS_TOKEN, RESEND_API_KEY, EMAIL_REMETENTE
+//   MP_ACCESS_TOKEN, SMTP_USER, SMTP_PASS, EMAIL_REMETENTE
 import { MercadoPagoConfig, Payment } from "mercadopago";
+import nodemailer from "nodemailer";
 import { Resend } from "resend";
 import { PLANOS, validarArquivos } from "./_planos.js";
 import { registrarVenda } from "./_db.js";
@@ -98,8 +103,9 @@ export default async function handler(req, res) {
 const SITE = "https://conhecimentodigital.vercel.app";
 
 async function enviarEmailComMateriais({ email, plano }) {
-  const resend = new Resend(process.env.RESEND_API_KEY);
   const remetente = process.env.EMAIL_REMETENTE || "Mundo dos Blocos <onboarding@resend.dev>";
+  const replyTo = process.env.EMAIL_RESPOSTA || "conhecimentodigital67@outlook.com";
+  const assunto = "Seu material chegou! 🎮 Mundo dos Blocos";
 
   const botoesHtml = plano.arquivos
     .map(
@@ -117,12 +123,7 @@ async function enviarEmailComMateriais({ email, plano }) {
     )
     .join("");
 
-  await resend.emails.send({
-    from: remetente,
-    to: email,
-    replyTo: process.env.EMAIL_RESPOSTA || "conhecimentodigital67@outlook.com",
-    subject: "Seu material chegou! 🎮 Mundo dos Blocos",
-    html: `
+  const html = `
       <div style="font-family:sans-serif;max-width:560px;margin:0 auto;background:#ffffff">
         <div style="background:#3E7A2B;padding:24px;border-radius:12px 12px 0 0;text-align:center">
           <img src="${SITE}/assets/logo-email.png" alt="Mundo dos Blocos" width="220" style="max-width:220px;height:auto" />
@@ -191,6 +192,38 @@ async function enviarEmailComMateriais({ email, plano }) {
           </tr>
         </table>
       </div>
-    `,
-  });
+    `;
+
+  if (process.env.SMTP_USER && process.env.SMTP_PASS) {
+    const transportador = nodemailer.createTransport({
+      host: process.env.SMTP_HOST || "smtp-mail.outlook.com",
+      port: Number(process.env.SMTP_PORT || 587),
+      secure: false,
+      auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
+    });
+    // Sem checagem de { error } aqui: nodemailer lança exceção de verdade
+    // quando o envio falha, então o try/catch do handler já cobre o caso.
+    await transportador.sendMail({
+      from: remetente,
+      to: email,
+      replyTo,
+      subject: assunto,
+      html,
+    });
+    return;
+  }
+
+  // Fallback: só usado se SMTP_USER/SMTP_PASS não estiverem configurados.
+  // Com o remetente de teste onboarding@resend.dev isso só entrega pra
+  // caixa da própria conta Resend — não confiar nisso em produção.
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  const resultado = await resend.emails.send({ from: remetente, to: email, replyTo, subject: assunto, html });
+
+  // resend.emails.send() NÃO lança exceção quando a entrega falha — só
+  // devolve { error }. Sem checar isso explicitamente, um pagamento
+  // aprovado podia terminar sem o cliente nunca receber o material, e sem
+  // nenhum log denunciando o motivo.
+  if (resultado.error) {
+    throw new Error(`Resend recusou o envio: ${JSON.stringify(resultado.error)}`);
+  }
 }
