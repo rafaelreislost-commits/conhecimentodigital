@@ -30,7 +30,7 @@ export default function Modulos() {
               <span className="bloco-sm absolute top-3 right-3 rounded-sm bg-ambar px-2.5 py-1 text-xs font-extrabold whitespace-nowrap">
                 {m.selo}
               </span>
-              <h3 className="titulo-sombra absolute inset-x-3 bottom-3 text-4xl leading-[0.95] sm:text-[2.75rem]">
+              <h3 className="titulo-sombra font-body absolute inset-x-3 bottom-3 text-4xl leading-[0.95] font-bold sm:text-[2.75rem]">
                 {m.titulo}
               </h3>
             </div>

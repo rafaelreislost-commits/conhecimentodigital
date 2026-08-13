@@ -15,7 +15,7 @@ export default function Faq() {
               name="faq"
               className="bloco group rounded-md bg-papel open:bg-white"
             >
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-4 p-5 font-display text-3xl leading-tight font-extrabold [&::-webkit-details-marker]:hidden">
+              <summary className="font-body flex cursor-pointer list-none items-center justify-between gap-4 p-5 text-3xl leading-tight font-bold [&::-webkit-details-marker]:hidden">
                 {item.p}
                 <span
                   className="bloco-sm flex size-10 shrink-0 items-center justify-center rounded-sm bg-ambar text-2xl leading-none transition-transform group-open:rotate-45"
