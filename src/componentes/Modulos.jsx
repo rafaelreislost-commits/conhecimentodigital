@@ -14,7 +14,7 @@ export default function Modulos() {
             key={m.id}
             className="bloco group relative flex flex-col overflow-hidden rounded-md transition-transform hover:-translate-y-1"
           >
-            <div className="relative h-56 shrink-0 overflow-hidden border-b-3 border-tinta">
+            <div className="relative h-64 shrink-0 overflow-hidden border-b-3 border-tinta">
               <img
                 src={`/assets/modulo-${m.id}.webp`}
                 alt=""
@@ -24,13 +24,13 @@ export default function Modulos() {
                 loading="lazy"
               />
               <div
-                className="absolute inset-0 bg-gradient-to-t from-tinta/85 via-tinta/10 to-transparent"
+                className="absolute inset-0 bg-gradient-to-t from-tinta/95 via-tinta/25 to-transparent"
                 aria-hidden="true"
               />
               <span className="bloco-sm absolute top-3 right-3 rounded-sm bg-ambar px-2.5 py-1 text-xs font-extrabold whitespace-nowrap">
                 {m.selo}
               </span>
-              <h3 className="titulo-claro absolute inset-x-4 bottom-3 text-xl">
+              <h3 className="titulo-claro absolute inset-x-3 bottom-3 text-4xl leading-[0.95] sm:text-[2.75rem]">
                 {m.titulo}
               </h3>
             </div>

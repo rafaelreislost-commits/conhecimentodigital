@@ -63,7 +63,7 @@ export default function Hero() {
             {HERO.titulo[2]}
           </h1>
 
-          <p className="mt-5 max-w-xl text-lg leading-relaxed text-papel/90 text-pretty sm:text-xl">
+          <p className="bloco mt-5 max-w-xl rounded-md bg-ambar px-5 py-4 text-lg leading-relaxed text-tinta text-pretty sm:text-xl">
             {HERO.subtitulo}
           </p>
 
@@ -79,11 +79,11 @@ export default function Hero() {
             </a>
           </div>
 
-          <ul className="mt-8 grid gap-2.5 sm:grid-cols-2">
+          <ul className="bloco mt-8 grid gap-2.5 rounded-md bg-ambar px-5 py-5 sm:grid-cols-2">
             {HERO.bullets.map((b) => (
               <li
                 key={b}
-                className="flex items-start gap-2 text-sm font-semibold text-papel"
+                className="flex items-start gap-2 text-sm font-semibold text-tinta"
               >
                 <Marcador />
                 {b}
