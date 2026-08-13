@@ -102,6 +102,46 @@
     color: var(--color-papel);
   }
 
+  /* Trilho de carrossel em loop infinito — a lista de itens é duplicada no
+     componente, e a animação anda exatamente metade da largura pra emendar
+     sem soluço. Pausa no hover pra dar tempo de ler. */
+  @keyframes rolar-marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  .marquee-trilho {
+    animation: rolar-marquee 32s linear infinite;
+  }
+  .marquee-trilho:hover {
+    animation-play-state: paused;
+  }
+
+  /* Flutuação suave dos ícones — cada item usa --atraso pra dessincronizar. */
+  @keyframes flutuar {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+  .flutuar {
+    animation: flutuar 3.2s ease-in-out infinite;
+    animation-delay: var(--atraso, 0s);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .marquee-trilho,
+    .flutuar {
+      animation: none;
+    }
+  }
+
   .titulo-3d-escuro {
     color: var(--color-tinta);
     text-shadow:

@@ -12,7 +12,16 @@ export default function Hero() {
         aria-hidden="true"
       />
       <div
-        className="absolute inset-0 bg-gradient-to-b from-tinta/85 via-tinta/50 to-tinta/95"
+        className="absolute inset-0 bg-gradient-to-b from-tinta/90 via-tinta/70 to-tinta/95"
+        aria-hidden="true"
+      />
+      {/* Névoa extra atrás do bloco de texto, pra letra nunca se perder no céu */}
+      <div
+        className="pointer-events-none absolute inset-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 60% 55% at 28% 42%, rgba(0,0,0,0.5), transparent 70%)",
+        }}
         aria-hidden="true"
       />
       <div
@@ -42,7 +51,7 @@ export default function Hero() {
             {HERO.selo}
           </p>
 
-          <h1 className="titulo-3d text-4xl leading-[1.08] text-balance sm:text-5xl lg:text-6xl">
+          <h1 className="titulo-3d drop-shadow-[0_8px_20px_rgba(0,0,0,0.85)] text-4xl leading-[1.08] text-balance sm:text-5xl lg:text-6xl">
             {HERO.titulo[0]}{" "}
             <span className="relative inline-block">
               <span className="relative z-10">{HERO.titulo[1]}</span>

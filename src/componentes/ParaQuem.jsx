@@ -17,12 +17,13 @@ export default function ParaQuem() {
       <Subtitulo>{PARA_QUEM.subtitulo}</Subtitulo>
 
       <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {PARA_QUEM.itens.map((item) => (
+        {PARA_QUEM.itens.map((item, i) => (
           <Cartao key={item.titulo} className="flex flex-col">
             <img
               src={`/assets/icone-${item.icone}.webp`}
               alt=""
-              className="bloco-sm mb-5 size-16 rounded-md"
+              className="flutuar bloco-sm mb-5 size-16 rounded-md"
+              style={{ "--atraso": `${(i % 3) * 0.4}s` }}
               width="300"
               height="300"
               loading="lazy"
