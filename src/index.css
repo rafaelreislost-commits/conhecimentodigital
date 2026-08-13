@@ -89,17 +89,27 @@
   .titulo-3d {
     color: var(--color-papel);
     text-shadow:
-      1px 1px 0 #6b4a1e,
-      2px 2px 0 #6b4a1e,
-      3px 3px 0 #6b4a1e,
-      4px 4px 0 #6b4a1e,
-      5px 5px 10px rgba(0, 0, 0, 0.45);
+      1px 1px 0 #000,
+      2px 2px 0 #000,
+      3px 3px 0 #000,
+      4px 4px 0 #000,
+      5px 5px 10px rgba(0, 0, 0, 0.6);
   }
 
   /* Mesma cor clara do titulo-3d, mas sem sombra — mais legível quando o
      fundo já é sólido (não precisa de relevo pra se destacar). */
   .titulo-claro {
     color: var(--color-papel);
+  }
+
+  /* Título claro com sombra preta suave (sem o relevo 3D em blocos) — pra
+     quando o fundo é foto/gradiente e precisa de contraste, mas o efeito
+     de "letra de livro" do titulo-3d seria carregado demais. */
+  .titulo-sombra {
+    color: var(--color-papel);
+    text-shadow:
+      0 2px 4px rgba(0, 0, 0, 0.9),
+      0 4px 12px rgba(0, 0, 0, 0.7);
   }
 
   /* Trilho de carrossel em loop infinito — a lista de itens é duplicada no

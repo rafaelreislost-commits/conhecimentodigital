@@ -56,7 +56,7 @@ export default function Bonus() {
                 <span className="text-xs font-extrabold tracking-wider text-ambar uppercase">
                   Extra {b.numero}
                 </span>
-                <h3 className="titulo-claro mt-1 text-xl">{b.titulo}</h3>
+                <h3 className="titulo-sombra mt-1 text-3xl leading-tight">{b.titulo}</h3>
                 <p className="mt-2 leading-relaxed text-papel/85">{b.texto}</p>
               </div>
             </article>

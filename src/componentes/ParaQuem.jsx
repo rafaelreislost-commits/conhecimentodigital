@@ -28,7 +28,7 @@ export default function ParaQuem() {
               height="300"
               loading="lazy"
             />
-            <h3 className="text-xl">{item.titulo}</h3>
+            <h3 className="text-3xl leading-tight">{item.titulo}</h3>
             <p className="mt-2.5 leading-relaxed text-tinta/75">{item.texto}</p>
           </Cartao>
         ))}

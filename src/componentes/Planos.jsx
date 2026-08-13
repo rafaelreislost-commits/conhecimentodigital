@@ -48,8 +48,8 @@ function Plano({ p }) {
 
   return (
     <article
-      className={`bloco relative flex flex-col rounded-md p-7 sm:p-8 ${
-        p.destaque ? "bg-white lg:-mt-4 lg:mb-4" : "bg-papel"
+      className={`bloco relative flex h-full flex-col rounded-md p-8 sm:p-9 ${
+        p.destaque ? "bg-white" : "bg-papel"
       }`}
     >
       {p.destaque && p.selo && (
@@ -204,7 +204,7 @@ export default function Planos() {
         </p>
       </div>
 
-      <div className="mx-auto mt-8 grid max-w-4xl items-start gap-8 lg:grid-cols-2">
+      <div className="mx-auto mt-12 grid max-w-4xl items-stretch gap-10 lg:grid-cols-2">
         {PLANOS.itens.map((p) => (
           <Plano key={p.id} p={p} />
         ))}
