@@ -109,9 +109,11 @@ export default async function handler(req, res) {
 const SITE = "https://conhecimentodigital.vercel.app";
 
 async function enviarEmailComMateriais({ email, plano }) {
-  const remetente = process.env.EMAIL_REMETENTE || "Mundo dos Blocos <onboarding@resend.dev>";
+  const marca = plano.marca || "Mundo dos Blocos";
+  const remetente = process.env.EMAIL_REMETENTE || `${marca} <onboarding@resend.dev>`;
   const replyTo = process.env.EMAIL_RESPOSTA || "conhecimentodigital67@outlook.com";
-  const assunto = "Seu material chegou! 🎮 Mundo dos Blocos";
+  const emoji = marca === "Aventura na Fé" ? "📖" : "🎮";
+  const assunto = `Seu material chegou! ${emoji} ${marca}`;
 
   const botoesHtml = plano.arquivos
     .map(
@@ -129,10 +131,39 @@ async function enviarEmailComMateriais({ email, plano }) {
     )
     .join("");
 
+  const isFe = marca === "Aventura na Fé";
+  const corFaixa = isFe ? "#5B3A8E" : "#3E7A2B";
+  const cabecalhoHtml = isFe
+    ? `<h1 style="color:#ffffff;margin:0;font-family:sans-serif;font-size:24px">📖 Aventura na Fé</h1>`
+    : `<img src="${SITE}/assets/logo-email.png" alt="Mundo dos Blocos" width="220" style="max-width:220px;height:auto" />`;
+  const mascoteHtml = isFe
+    ? ""
+    : `<td width="80" valign="top" style="padding-left:12px">
+         <img src="${SITE}/assets/mascote-email.jpg" alt="" width="72"
+              style="width:72px;height:auto;border-radius:8px" />
+       </td>`;
+  const stickersHtml = isFe
+    ? ""
+    : `<table role="presentation" cellpadding="0" cellspacing="0" style="margin-top:20px">
+         <tr>
+           <td style="padding-right:10px">
+             <img src="${SITE}/assets/sticker-boneco-explorador-email.jpg" alt=""
+                  width="56" style="width:56px;height:auto;border-radius:6px;transform:rotate(-4deg)" />
+           </td>
+           <td>
+             <img src="${SITE}/assets/sticker-boneco-leitora-email.jpg" alt=""
+                  width="56" style="width:56px;height:auto;border-radius:6px;transform:rotate(4deg)" />
+           </td>
+         </tr>
+       </table>`;
+  const disclaimer = isFe
+    ? "Conhecimento Digital · Aventura na Fé — material educativo cristão independente."
+    : "Conhecimento Digital · Mundo dos Blocos — material educativo independente, sem vínculo com Mojang, Microsoft ou Roblox Corporation.";
+
   const html = `
       <div style="font-family:sans-serif;max-width:560px;margin:0 auto;background:#ffffff">
-        <div style="background:#3E7A2B;padding:24px;border-radius:12px 12px 0 0;text-align:center">
-          <img src="${SITE}/assets/logo-email.png" alt="Mundo dos Blocos" width="220" style="max-width:220px;height:auto" />
+        <div style="background:${corFaixa};padding:24px;border-radius:12px 12px 0 0;text-align:center">
+          ${cabecalhoHtml}
         </div>
 
         <div style="padding:28px 24px;border:2px solid #2B2118;border-top:none;border-radius:0 0 12px 12px">
@@ -145,10 +176,7 @@ async function enviarEmailComMateriais({ email, plano }) {
                   já estão prontos — é só clicar em cada botão abaixo pra baixar:
                 </p>
               </td>
-              <td width="80" valign="top" style="padding-left:12px">
-                <img src="${SITE}/assets/mascote-email.jpg" alt="" width="72"
-                     style="width:72px;height:auto;border-radius:8px" />
-              </td>
+              ${mascoteHtml}
             </tr>
           </table>
 
@@ -169,18 +197,7 @@ async function enviarEmailComMateriais({ email, plano }) {
             responder este e-mail que a gente te ajuda.
           </p>
 
-          <table role="presentation" cellpadding="0" cellspacing="0" style="margin-top:20px">
-            <tr>
-              <td style="padding-right:10px">
-                <img src="${SITE}/assets/sticker-boneco-explorador-email.jpg" alt=""
-                     width="56" style="width:56px;height:auto;border-radius:6px;transform:rotate(-4deg)" />
-              </td>
-              <td>
-                <img src="${SITE}/assets/sticker-boneco-leitora-email.jpg" alt=""
-                     width="56" style="width:56px;height:auto;border-radius:6px;transform:rotate(4deg)" />
-              </td>
-            </tr>
-          </table>
+          ${stickersHtml}
         </div>
 
         <table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin-top:16px">
@@ -191,8 +208,7 @@ async function enviarEmailComMateriais({ email, plano }) {
             </td>
             <td valign="middle" style="padding-left:8px">
               <p style="color:#9AA0A6;font-size:12px;margin:0">
-                Conhecimento Digital · Mundo dos Blocos — material educativo independente,
-                sem vínculo com Mojang, Microsoft ou Roblox Corporation.
+                ${disclaimer}
               </p>
             </td>
           </tr>

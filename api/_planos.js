@@ -19,6 +19,7 @@ export function validarArquivos(plano) {
 export const PLANOS = {
   basico: {
     titulo: "Mundo dos Blocos — Só o material",
+    marca: "Mundo dos Blocos",
     preco: 19.9,
     arquivos: [
       arquivo("portugues", "Português no Mundo dos Blocos.pdf"),
@@ -27,6 +28,7 @@ export const PLANOS = {
   },
   completo: {
     titulo: "Mundo dos Blocos — Pacote completo",
+    marca: "Mundo dos Blocos",
     preco: 34.9,
     arquivos: [
       arquivo("portugues", "Português no Mundo dos Blocos.pdf"),
@@ -37,5 +39,11 @@ export const PLANOS = {
       arquivo("plano", "Plano de Estudos Semanal.pdf"),
       arquivo("bonecos", "Bonecos de Papel.pdf"),
     ],
+  },
+  "aventura-fe": {
+    titulo: "Aventura na Fé — Pacote completo",
+    marca: "Aventura na Fé",
+    preco: 34.9,
+    arquivos: [arquivo("aventura-fe", "Aventura na Fé.pdf")],
   },
 };
