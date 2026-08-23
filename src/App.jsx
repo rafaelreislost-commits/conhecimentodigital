@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { iniciarPixel } from "./lib/pixel";
 import Obrigado from "./paginas/Obrigado";
+import AventuraNaFe from "./paginas/AventuraNaFe";
 
 import Topo from "./componentes/Topo";
 import Hero from "./componentes/Hero";
@@ -13,6 +14,7 @@ import Planos from "./componentes/Planos";
 import Garantia from "./componentes/Garantia";
 import Faq from "./componentes/Faq";
 import CtaFinal from "./componentes/CtaFinal";
+import OutrosProjetos from "./componentes/OutrosProjetos";
 import Rodape from "./componentes/Rodape";
 import BarraMobile from "./componentes/BarraMobile";
 
@@ -21,6 +23,10 @@ export default function App() {
 
   if (window.location.pathname === "/obrigado") {
     return <Obrigado />;
+  }
+
+  if (window.location.pathname === "/aventura-na-fe") {
+    return <AventuraNaFe />;
   }
 
   return (
@@ -37,6 +43,7 @@ export default function App() {
         <Garantia />
         <Faq />
         <CtaFinal />
+        <OutrosProjetos />
       </main>
       <Rodape />
       <BarraMobile />
