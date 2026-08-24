@@ -1,5 +1,5 @@
 {
   "rewrites": [
-    { "source": "/((?!api/|assets/).*)", "destination": "/index.html" }
+    { "source": "/((?!api/|assets/|tiktok.*\\.txt$).*)", "destination": "/index.html" }
   ]
 }
