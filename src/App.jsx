@@ -4,6 +4,7 @@ import Obrigado from "./paginas/Obrigado";
 import AventuraNaFe from "./paginas/AventuraNaFe";
 
 import Topo from "./componentes/Topo";
+import FaixaPromoFe from "./componentes/FaixaPromoFe";
 import Hero from "./componentes/Hero";
 import Previas from "./componentes/Previas";
 import ParaQuem from "./componentes/ParaQuem";
@@ -32,6 +33,7 @@ export default function App() {
   return (
     <>
       <Topo />
+      <FaixaPromoFe />
       <main>
         <Hero />
         <Previas />

@@ -10,6 +10,18 @@ import {
   FAQ_FE,
 } from "../conteudo-aventura-fe";
 import { Botao, Etiqueta, Marcador, Secao, Subtitulo, Titulo, precoBR } from "../componentes/Ui";
+import Rodape from "../componentes/Rodape";
+
+const ATIVIDADES_DESTAQUE = [
+  { arq: "af-01-criacao-atividade.png", legenda: "Colorir · A Criação do Mundo" },
+  { arq: "af-04-davi-atividade2.png", legenda: "Labirinto · Davi e Golias" },
+  { arq: "af-08-paes-e-peixes-atividade3.png", legenda: "Quiz bíblico · Multiplicação dos Pães" },
+  { arq: "af-12-ressurreicao-atividade.png", legenda: "Ligue os pontos · Ressurreição" },
+  { arq: "af-15-dez-mandamentos-atividade2.png", legenda: "Caça-palavras · Dez Mandamentos" },
+  { arq: "af-19-rute-atividade3.png", legenda: "Quiz bíblico · Rute, a Fiel" },
+  { arq: "af-21-jonas-atividade.png", legenda: "Colorir · Jonas e o Grande Peixe" },
+  { arq: "af-25-grande-missao-atividade2.png", legenda: "Labirinto · A Grande Missão" },
+];
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -188,6 +200,67 @@ function AfHistorias() {
             <CartaoTema key={`${t.id}-${i}`} tema={t} />
           ))}
         </ul>
+      </div>
+    </Secao>
+  );
+}
+
+function AfAtividades() {
+  return (
+    <Secao className="border-b-3 border-tinta bg-white">
+      <Etiqueta cor="bg-energia">
+        <span className="text-papel">Não é só ler</span>
+      </Etiqueta>
+      <Titulo className="mt-4">3 atividades diferentes em cada história</Titulo>
+      <Subtitulo>
+        Colorir, labirinto, caça-palavras, ligue os pontos, quiz bíblico e mais — depois
+        de cada história vêm 3 páginas de atividade pra fixar o que ela acabou de ler.
+      </Subtitulo>
+
+      <div className="mt-10 grid grid-cols-2 gap-4 sm:grid-cols-4">
+        {ATIVIDADES_DESTAQUE.map((a) => (
+          <figure
+            key={a.arq}
+            className="bloco group overflow-hidden rounded-md bg-papel"
+          >
+            <div className="aspect-[5/7] overflow-hidden border-b-3 border-tinta">
+              <img
+                src={`/assets/aventura-na-fe/${a.arq}`}
+                alt={a.legenda}
+                className="size-full object-cover transition-transform duration-300 group-hover:scale-105"
+                loading="lazy"
+              />
+            </div>
+            <figcaption className="p-2.5 text-center text-xs leading-snug font-bold text-tinta">
+              {a.legenda}
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </Secao>
+  );
+}
+
+function AfGarantia() {
+  return (
+    <Secao className="border-b-3 border-tinta bg-white">
+      <div className="bloco mx-auto flex max-w-4xl flex-col items-center gap-8 rounded-md bg-papel p-8 text-center sm:p-12 md:flex-row md:text-left">
+        <div className="bloco-sm relative flex size-44 shrink-0 items-center justify-center overflow-hidden rounded-full bg-cristal/20 text-6xl">
+          🔒
+        </div>
+        <div>
+          <h2 className="text-3xl sm:text-4xl">Compra 100% segura</h2>
+          <p className="mt-3 text-lg leading-relaxed text-tinta/80">
+            Pagamento processado pelo Mercado Pago, com Pix, cartão ou boleto.
+          </p>
+          <p className="mt-3 text-lg leading-relaxed text-tinta/80">
+            Acesso enviado por e-mail assim que o pagamento é aprovado, com link de
+            download vitalício.
+          </p>
+          <p className="mt-3 text-lg leading-relaxed text-tinta/80">
+            Dúvidas ou problemas com o pedido? É só responder o e-mail da compra.
+          </p>
+        </div>
       </div>
     </Secao>
   );
@@ -430,11 +503,17 @@ export default function AventuraNaFe() {
       <main>
         <AfSobre />
         <AfHistorias />
+        <AfAtividades />
         <AfParaQuem />
         <AfBonus />
+        <AfGarantia />
         <AfPlanos />
         <AfFaq />
       </main>
+      <Rodape
+        produto={PRODUTO_FE}
+        disclaimer="Aventura na Fé — material educativo cristão independente, com arte original. Conteúdo baseado em passagens bíblicas de domínio público, sem vínculo institucional com qualquer igreja ou denominação específica."
+      />
     </>
   );
 }

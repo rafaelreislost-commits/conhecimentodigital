@@ -1,6 +1,6 @@
 import { PRODUTO, RODAPE } from "../conteudo";
 
-export default function Rodape() {
+export default function Rodape({ produto = PRODUTO, disclaimer = RODAPE.disclaimer }) {
   const ano = new Date().getFullYear();
 
   return (
@@ -18,9 +18,9 @@ export default function Rodape() {
             />
             <div>
               <p className="font-display text-xl font-extrabold text-papel">
-                {PRODUTO.nome}
+                {produto.nome}
               </p>
-              <p className="mt-1 text-sm">{PRODUTO.subtitulo}</p>
+              <p className="mt-1 text-sm">{produto.subtitulo}</p>
               <p className="mt-3 text-sm">
                 {RODAPE.razaoSocial} &middot;{" "}
                 <a
@@ -62,7 +62,7 @@ export default function Rodape() {
 
         <hr className="my-8 border-papel/15" />
 
-        <p className="text-xs leading-relaxed">{RODAPE.disclaimer}</p>
+        <p className="text-xs leading-relaxed">{disclaimer}</p>
         <p className="mt-3 text-xs">
           &copy; {ano} {RODAPE.razaoSocial}
           {RODAPE.cnpj && ` — CNPJ ${RODAPE.cnpj}`}. Todos os direitos reservados.
