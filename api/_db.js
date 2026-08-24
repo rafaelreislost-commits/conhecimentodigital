@@ -49,3 +49,57 @@ export async function listarVendas() {
   const { rows } = await sql`SELECT * FROM vendas ORDER BY criado_em DESC`;
   return rows;
 }
+
+// --- TikTok: tokens de OAuth (1 linha por conta conectada) ------------------
+
+let tabelaTiktokPronta = false;
+
+async function garantirTabelaTiktok() {
+  if (tabelaTiktokPronta) return;
+  await sql`
+    CREATE TABLE IF NOT EXISTS tiktok_tokens (
+      open_id TEXT PRIMARY KEY,
+      access_token TEXT NOT NULL,
+      refresh_token TEXT NOT NULL,
+      access_token_expires_at TIMESTAMPTZ NOT NULL,
+      refresh_token_expires_at TIMESTAMPTZ NOT NULL,
+      atualizado_em TIMESTAMPTZ NOT NULL DEFAULT now()
+    )
+  `;
+  tabelaTiktokPronta = true;
+}
+
+export async function salvarTokenTiktok({
+  openId,
+  accessToken,
+  refreshToken,
+  expiresIn,
+  refreshExpiresIn,
+}) {
+  await garantirTabelaTiktok();
+  await sql`
+    INSERT INTO tiktok_tokens (open_id, access_token, refresh_token, access_token_expires_at, refresh_token_expires_at, atualizado_em)
+    VALUES (
+      ${openId}, ${accessToken}, ${refreshToken},
+      now() + (${expiresIn} || ' seconds')::interval,
+      now() + (${refreshExpiresIn} || ' seconds')::interval,
+      now()
+    )
+    ON CONFLICT (open_id) DO UPDATE SET
+      access_token = EXCLUDED.access_token,
+      refresh_token = EXCLUDED.refresh_token,
+      access_token_expires_at = EXCLUDED.access_token_expires_at,
+      refresh_token_expires_at = EXCLUDED.refresh_token_expires_at,
+      atualizado_em = now()
+  `;
+}
+
+// Pega a conta conectada mais recente. Hoje só conectamos uma conta TikTok,
+// então "a mais recente" é sempre a certa.
+export async function pegarTokenTiktok() {
+  await garantirTabelaTiktok();
+  const { rows } = await sql`
+    SELECT * FROM tiktok_tokens ORDER BY atualizado_em DESC LIMIT 1
+  `;
+  return rows[0] || null;
+}
