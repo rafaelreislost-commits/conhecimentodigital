@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { iniciarPixel } from "./lib/pixel";
+import { iniciarTiktokPixel } from "./lib/tiktokPixel";
 import Obrigado from "./paginas/Obrigado";
 import AventuraNaFe from "./paginas/AventuraNaFe";
 
@@ -21,6 +22,7 @@ import BarraMobile from "./componentes/BarraMobile";
 
 export default function App() {
   useEffect(iniciarPixel, []);
+  useEffect(iniciarTiktokPixel, []);
 
   if (window.location.pathname === "/obrigado") {
     return <Obrigado />;

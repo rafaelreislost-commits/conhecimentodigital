@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { PLANOS } from "../conteudo";
 import { rastrearCheckout } from "../lib/pixel";
+import { rastrearTiktokCheckout } from "../lib/tiktokPixel";
 import { Etiqueta, Marcador, Secao, Subtitulo, Titulo, precoBR } from "./Ui";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -38,6 +39,7 @@ function Plano({ p }) {
     }
     setCarregando(true);
     rastrearCheckout(p);
+    rastrearTiktokCheckout(p);
     try {
       await iniciarPagamento(p, email.trim());
     } catch {

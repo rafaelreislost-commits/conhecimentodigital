@@ -1,7 +1,30 @@
-import { PRODUTO } from "../conteudo";
+import { useEffect } from "react";
+import { PLANOS, PRODUTO } from "../conteudo";
 import { Botao } from "../componentes/Ui";
+import { rastrear } from "../lib/pixel";
+import { rastrearTiktokCompra } from "../lib/tiktokPixel";
+
+// O Mercado Pago devolve external_reference (o id do plano) e payment_id
+// na própria URL de retorno — sem precisar de nada extra no nosso backend.
+function planoComprado() {
+  const params = new URLSearchParams(window.location.search);
+  const planoId = params.get("external_reference");
+  return PLANOS.itens.find((p) => p.id === planoId) || null;
+}
 
 export default function Obrigado() {
+  useEffect(() => {
+    const plano = planoComprado();
+    if (!plano) return;
+    rastrear("Purchase", {
+      content_name: plano.nome,
+      content_ids: [plano.id],
+      value: plano.preco,
+      currency: "BRL",
+    });
+    rastrearTiktokCompra(plano);
+  }, []);
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-center bg-ceu/20 px-5 py-16 text-center sm:px-8">
       <img

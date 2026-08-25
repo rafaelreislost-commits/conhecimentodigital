@@ -332,3 +332,7 @@ export const RODAPE = {
 
 // ⚠️ REVISAR: cole seu Pixel ID. Deixe vazio para não carregar nada.
 export const PIXEL_ID = "";
+
+// ⚠️ REVISAR: cole o Pixel ID do TikTok Ads Manager. Deixe vazio para não
+// carregar nada. Pego em TikTok Ads Manager → Assets → Events → Web Events.
+export const TIKTOK_PIXEL_ID = "";
