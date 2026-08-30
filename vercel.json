@@ -1,5 +1,16 @@
 {
+  "headers": [
+    {
+      "source": "/api/(.*)",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+    },
+    {
+      "source": "/obrigado",
+      "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
+    }
+  ],
   "rewrites": [
+    { "source": "/", "destination": "/api/meta-page" },
     { "source": "/((?!api/|assets/|tiktok.*\\.txt$).*)", "destination": "/index.html" }
   ]
 }

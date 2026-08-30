@@ -19,13 +19,28 @@ import CtaFinal from "./componentes/CtaFinal";
 import OutrosProjetos from "./componentes/OutrosProjetos";
 import Rodape from "./componentes/Rodape";
 import BarraMobile from "./componentes/BarraMobile";
+import Metadata from "./componentes/Metadata";
 
 export default function App() {
   useEffect(iniciarPixel, []);
   useEffect(iniciarTiktokPixel, []);
 
   if (window.location.pathname === "/obrigado") {
-    return <Obrigado />;
+    return (
+      <>
+        <Metadata />
+        <Obrigado />
+      </>
+    );
+  }
+
+  if (window.location.pathname === "/aventura-na-fe") {
+    return (
+      <>
+        <Metadata />
+        <AventuraNaFe />
+      </>
+    );
   }
 
   if (window.location.pathname === "/aventura-na-fe") {
@@ -34,6 +49,7 @@ export default function App() {
 
   return (
     <>
+      <Metadata />
       <Topo />
       <FaixaPromoFe />
       <main>
