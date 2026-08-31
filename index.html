@@ -56,13 +56,52 @@
         "@type": "Product",
         "name": "Mundo dos Blocos — Português e Matemática",
         "description": "Material educativo imprimível com 180 atividades de Português e Matemática do 1º ao 6º ano, com a estética dos jogos de blocos.",
-        "brand": { "@type": "Organization", "name": "Conhecimento Digital" },
+        "image": [
+          "https://conhecimentodigital.vercel.app/assets/completo.webp",
+          "https://conhecimentodigital.vercel.app/assets/portugues.webp",
+          "https://conhecimentodigital.vercel.app/assets/matematica.webp"
+        ],
+        "brand": { "@type": "Brand", "name": "Mundo dos Blocos" },
         "offers": {
           "@type": "Offer",
           "url": "https://conhecimentodigital.vercel.app/",
           "priceCurrency": "BRL",
           "price": "34.90",
-          "availability": "https://schema.org/InStock"
+          "availability": "https://schema.org/InStock",
+          "itemCondition": "https://schema.org/NewCondition",
+          "shippingDetails": {
+            "@type": "OfferShippingDetails",
+            "shippingRate": {
+              "@type": "MonetaryAmount",
+              "value": "0",
+              "currency": "BRL"
+            },
+            "shippingDestination": {
+              "@type": "DefinedRegion",
+              "addressCountry": "BR"
+            },
+            "deliveryTime": {
+              "@type": "ShippingDeliveryTime",
+              "handlingTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 0,
+                "maxValue": 0,
+                "unitCode": "DAY"
+              },
+              "transitTime": {
+                "@type": "QuantitativeValue",
+                "minValue": 0,
+                "maxValue": 0,
+                "unitCode": "DAY"
+              }
+            }
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "applicableCountry": "BR",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 7
+          }
         }
       }
     </script>
