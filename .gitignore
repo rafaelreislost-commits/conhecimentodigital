@@ -25,3 +25,7 @@ dist-ssr
 
 .vercel
 .env*
+
+# Assets pesados de marketing (não são usados pelo site) — originais em ../_originais-assets-pesados
+public/assets/videos-marketing/
+public/assets/social-posts/
