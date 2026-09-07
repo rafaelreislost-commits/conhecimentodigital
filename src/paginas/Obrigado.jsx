@@ -6,22 +6,29 @@ import { rastrearTiktokCompra } from "../lib/tiktokPixel";
 
 // O Mercado Pago devolve external_reference (o id do plano) e payment_id
 // na própria URL de retorno — sem precisar de nada extra no nosso backend.
-function planoComprado() {
+function dadosCompra() {
   const params = new URLSearchParams(window.location.search);
   const planoId = params.get("external_reference");
-  return PLANOS.itens.find((p) => p.id === planoId) || null;
+  const plano = PLANOS.itens.find((p) => p.id === planoId) || null;
+  // payment_id vem na URL de retorno do Mercado Pago (auto_return). É usado
+  // como eventID pra Meta deduplicar com o Purchase server-side (webhook).
+  return { plano, paymentId: params.get("payment_id") };
 }
 
 export default function Obrigado() {
   useEffect(() => {
-    const plano = planoComprado();
+    const { plano, paymentId } = dadosCompra();
     if (!plano) return;
-    rastrear("Purchase", {
-      content_name: plano.nome,
-      content_ids: [plano.id],
-      value: plano.preco,
-      currency: "BRL",
-    });
+    rastrear(
+      "Purchase",
+      {
+        content_name: plano.nome,
+        content_ids: [plano.id],
+        value: plano.preco,
+        currency: "BRL",
+      },
+      paymentId ? { eventID: String(paymentId) } : undefined,
+    );
     rastrearTiktokCompra(plano);
   }, []);
 

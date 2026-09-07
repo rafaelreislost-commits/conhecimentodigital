@@ -330,8 +330,10 @@ export const RODAPE = {
     "Material educativo independente, com arte original. Não possui vínculo, patrocínio ou aprovação da Mojang Studios, Microsoft Corporation ou Roblox Corporation. As marcas citadas pertencem aos seus respectivos titulares.",
 };
 
-// ⚠️ REVISAR: cole seu Pixel ID. Deixe vazio para não carregar nada.
-export const PIXEL_ID = "";
+// Pixel da Meta "Conhecimento Digital - Site" (Gerenciador de Eventos,
+// portfólio Conhecimento Digital / BM 1052439023796790). Deixe vazio para
+// não carregar nada.
+export const PIXEL_ID = "2983377001998744";
 
 // ⚠️ REVISAR: cole o Pixel ID do TikTok Ads Manager. Deixe vazio para não
 // carregar nada. Pego em TikTok Ads Manager → Assets → Events → Web Events.

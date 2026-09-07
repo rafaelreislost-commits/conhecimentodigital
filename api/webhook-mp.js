@@ -15,6 +15,7 @@ import nodemailer from "nodemailer";
 import { Resend } from "resend";
 import { PLANOS, validarArquivos } from "./_planos.js";
 import { registrarVenda } from "./_db.js";
+import { enviarPurchaseMeta } from "./_meta-capi.js";
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
@@ -92,6 +93,20 @@ export default async function handler(req, res) {
       });
     } catch (erroDb) {
       console.error("Falha ao registrar venda no banco (não afeta a entrega):", erroDb);
+    }
+
+    // Evento Purchase server-side pra Meta (API de Conversões). event_id = id do
+    // pagamento, o mesmo que o Pixel do navegador usa em /obrigado, pra Meta
+    // deduplicar. Falha aqui não afeta a entrega do material — só loga.
+    try {
+      await enviarPurchaseMeta({
+        email: emailCliente,
+        valor: pagamento.transaction_amount ?? plano.preco,
+        eventId: paymentId,
+        eventSourceUrl: `${SITE}/obrigado`,
+      });
+    } catch (erroCapi) {
+      console.error("Falha ao enviar Purchase pra Meta CAPI (não afeta a entrega):", erroCapi);
     }
 
     return res.status(200).end();

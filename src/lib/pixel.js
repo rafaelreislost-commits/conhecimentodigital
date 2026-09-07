@@ -34,9 +34,11 @@ export function iniciarPixel() {
   window.fbq("track", "PageView");
 }
 
-export function rastrear(evento, dados) {
+export function rastrear(evento, dados, opcoes) {
   if (!PIXEL_ID || typeof window === "undefined" || !window.fbq) return;
-  window.fbq("track", evento, dados);
+  // `opcoes` carrega o eventID (dedupe com a API de Conversões do servidor).
+  if (opcoes) window.fbq("track", evento, dados, opcoes);
+  else window.fbq("track", evento, dados);
 }
 
 /** Clique em qualquer botão de compra → InitiateCheckout. */
