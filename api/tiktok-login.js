@@ -1,5 +1,5 @@
 // Inicia o login OAuth do TikTok (Login Kit, com PKCE).
-// Acesse https://SEU-SITE.vercel.app/api/tiktok-login pra conectar/reconectar
+// Acesse https://conhecimentodigital.net/api/tiktok-login pra conectar/reconectar
 // a conta do TikTok que vai receber os posts automáticos.
 import crypto from "node:crypto";
 

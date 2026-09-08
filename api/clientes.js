@@ -2,7 +2,7 @@
 // valor, método de pagamento e status. Protegido por senha simples via
 // query string (?chave=...), configurada em ADMIN_TOKEN.
 //
-// Acesso: https://SEU-SITE.vercel.app/api/clientes?chave=SUA-SENHA
+// Acesso: https://conhecimentodigital.net/api/clientes?chave=SUA-SENHA
 import { listarVendas } from "./_db.js";
 
 function precoBR(v) {
