@@ -323,7 +323,7 @@ export const FAQ = {
 export const RODAPE = {
   // ⚠️ REVISAR: preencher com seus dados reais antes de publicar.
   // E-mail de suporte é obrigatório; CNPJ é obrigatório se você emitir nota.
-  emailSuporte: "conhecimentodigital67@outlook.com",
+  emailSuporte: "contato@conhecimentodigital.net",
   razaoSocial: "Conhecimento Digital",
   cnpj: "",
   disclaimer:

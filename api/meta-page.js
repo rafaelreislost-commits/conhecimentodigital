@@ -1,4 +1,4 @@
-const SITE_URL = "https://conhecimentodigital.vercel.app/";
+const SITE_URL = "https://conhecimentodigital.net/";
 
 export default async function handler(_request, response) {
   const source = await fetch(`${SITE_URL}app-shell.html?_origin=1`, {

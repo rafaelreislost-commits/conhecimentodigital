@@ -1,6 +1,6 @@
 import { HERO_FE, PRODUTO_FE } from "../conteudo-aventura-fe.js";
 
-export const SITE_URL = "https://conhecimentodigital.vercel.app";
+export const SITE_URL = "https://conhecimentodigital.net";
 
 const HOME = {
   title: "Mundo dos Blocos — 180 Atividades de Português e Matemática (1º ao 6º Ano) em PDF",

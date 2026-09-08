@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://conhecimentodigital.vercel.app/sitemap.xml
+Sitemap: https://conhecimentodigital.net/sitemap.xml

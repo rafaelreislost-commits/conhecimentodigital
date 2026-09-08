@@ -138,12 +138,12 @@ export default async function handler(req, res) {
 
 // Domínio público onde os assets do e-mail ficam hospedados (e-mail não
 // pode referenciar caminho relativo — precisa de URL absoluta).
-const SITE = "https://conhecimentodigital.vercel.app";
+const SITE = "https://conhecimentodigital.net";
 
 async function enviarEmailComMateriais({ email, plano }) {
   const marca = plano.marca || "Mundo dos Blocos";
   const remetente = process.env.EMAIL_REMETENTE || `${marca} <onboarding@resend.dev>`;
-  const replyTo = process.env.EMAIL_RESPOSTA || "conhecimentodigital67@outlook.com";
+  const replyTo = process.env.EMAIL_RESPOSTA || "contato@conhecimentodigital.net";
   const emoji = marca === "Aventura na Fé" ? "📖" : "🎮";
   const assunto = `Seu material chegou! ${emoji} ${marca}`;
 
