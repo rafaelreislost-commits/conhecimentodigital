@@ -15,7 +15,8 @@ export const SITE = "https://conhecimentodigital.net";
 
 export async function enviarEmailComMateriais({ email, plano }) {
   const marca = plano.marca || "Mundo dos Blocos";
-  const remetente = process.env.EMAIL_REMETENTE || `${marca} <onboarding@resend.dev>`;
+  const nomeRemetente = process.env.EMAIL_REMETENTE_NOME || "Conhecimento Digital";
+  const remetente = process.env.EMAIL_REMETENTE || `${nomeRemetente} <onboarding@resend.dev>`;
   const replyTo = process.env.EMAIL_RESPOSTA || "contato@conhecimentodigital.net";
   const emoji = marca === "Aventura na Fé" ? "📖" : "🎮";
   const assunto = `Seu material chegou! ${emoji} ${marca}`;
@@ -148,7 +149,7 @@ export async function enviarEmailComMateriais({ email, plano }) {
       },
       body: JSON.stringify({
         personalizations: [{ to: [{ email }] }],
-        from: { email: process.env.SENDGRID_FROM || process.env.SMTP_USER, name: "Mundo dos Blocos" },
+        from: { email: process.env.SENDGRID_FROM || process.env.SMTP_USER, name: nomeRemetente },
         reply_to: { email: replyTo },
         subject: assunto,
         content: [
