@@ -11,6 +11,7 @@ import {
 } from "../conteudo-aventura-fe";
 import { Botao, Etiqueta, Marcador, Secao, Subtitulo, Titulo, precoBR } from "../componentes/Ui";
 import Rodape from "../componentes/Rodape";
+import { dadosMetaNavegador } from "../lib/fbCookies";
 
 const ATIVIDADES_DESTAQUE = [
   { arq: "af-01-criacao-atividade.png", legenda: "Colorir · A Criação do Mundo" },
@@ -347,7 +348,7 @@ async function iniciarPagamentoFe(email) {
   const resposta = await fetch("/api/criar-pagamento", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ plano: PLANO_FE.nome, email }),
+    body: JSON.stringify({ plano: PLANO_FE.nome, email, ...dadosMetaNavegador() }),
   });
   if (!resposta.ok) throw new Error("Falha ao criar pagamento");
   const dados = await resposta.json();

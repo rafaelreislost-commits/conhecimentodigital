@@ -35,6 +35,25 @@ export default async function handler(req, res) {
 
   const origem = `https://${req.headers.host}`;
 
+  // Dados de correspondência pra API de Conversões da Meta (usados pelo
+  // webhook no evento Purchase server-side). Capturados AQUI porque esta
+  // request vem do navegador do cliente — o webhook vem do Mercado Pago, com
+  // IP/User-Agent errados. fbp/fbc chegam no corpo (lidos dos cookies do
+  // Pixel no front, ver src/lib/fbCookies.js).
+  const corpo = req.method === "POST" ? req.body || {} : {};
+  const clientIp =
+    (req.headers["x-forwarded-for"] || "").split(",")[0].trim() ||
+    req.headers["x-real-ip"] ||
+    req.socket?.remoteAddress ||
+    undefined;
+  const clientUa = req.headers["user-agent"] || undefined;
+  const metaMatch = {
+    ...(typeof corpo.fbp === "string" && corpo.fbp ? { fbp: corpo.fbp } : {}),
+    ...(typeof corpo.fbc === "string" && corpo.fbc ? { fbc: corpo.fbc } : {}),
+    ...(clientIp ? { client_ip: clientIp } : {}),
+    ...(clientUa ? { client_ua: clientUa } : {}),
+  };
+
   try {
     const client = new MercadoPagoConfig({ accessToken });
     const preference = new Preference(client);
@@ -53,7 +72,7 @@ export default async function handler(req, res) {
         // Identifica o plano comprado para o webhook, sem depender do item.
         external_reference: planoId,
         payer: { email },
-        metadata: { email_comprador: email },
+        metadata: { email_comprador: email, ...metaMatch },
         back_urls: {
           success: `${origem}/obrigado`,
           failure: `${origem}/?pagamento=falhou`,

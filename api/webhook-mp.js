@@ -99,8 +99,25 @@ export default async function handler(req, res) {
     // pagamento, o mesmo que o Pixel do navegador usa em /obrigado, pra Meta
     // deduplicar. Falha aqui não afeta a entrega do material — só loga.
     try {
+      const md = pagamento.metadata || {};
+      const telefone = [pagamento.payer?.phone?.area_code, pagamento.payer?.phone?.number]
+        .filter(Boolean)
+        .join("");
       await enviarPurchaseMeta({
         email: emailCliente,
+        phone: telefone || undefined,
+        firstName: pagamento.payer?.first_name || undefined,
+        lastName: pagamento.payer?.last_name || undefined,
+        // id estável do pagador no MP (sempre presente); CPF como fallback.
+        externalId:
+          (pagamento.payer?.id && String(pagamento.payer.id)) ||
+          pagamento.payer?.identification?.number ||
+          undefined,
+        // Capturados no /api/criar-pagamento (request do navegador do cliente).
+        clientIp: md.client_ip || undefined,
+        clientUserAgent: md.client_ua || undefined,
+        fbp: md.fbp || undefined,
+        fbc: md.fbc || undefined,
         valor: pagamento.transaction_amount ?? plano.preco,
         eventId: paymentId,
         eventSourceUrl: `${SITE}/obrigado`,

@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { PLANOS } from "../conteudo";
 import { rastrearCheckout } from "../lib/pixel";
+import { dadosMetaNavegador } from "../lib/fbCookies";
 import { rastrearTiktokCheckout } from "../lib/tiktokPixel";
 import { Etiqueta, Marcador, Secao, Subtitulo, Titulo, precoBR } from "./Ui";
 
@@ -10,7 +11,7 @@ async function iniciarPagamento(p, email) {
   const resposta = await fetch("/api/criar-pagamento", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ plano: p.id, email }),
+    body: JSON.stringify({ plano: p.id, email, ...dadosMetaNavegador() }),
   });
   if (!resposta.ok) {
     throw new Error("Falha ao criar pagamento");
