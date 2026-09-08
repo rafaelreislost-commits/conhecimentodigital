@@ -231,6 +231,22 @@ async function enviarEmailComMateriais({ email, plano }) {
       </div>
     `;
 
+  // Alternativa em texto puro. Todo e-mail HTML deveria carregar uma versão
+  // text/plain junto — sem ela, filtros de spam (Gmail/Outlook) pontuam a
+  // mensagem pra baixo. Não muda nada visualmente pra quem lê o HTML.
+  const texto = [
+    `Seu material chegou!`,
+    ``,
+    `Obrigado por comprar o ${plano.titulo}. Seus arquivos (links vitalícios):`,
+    ``,
+    ...plano.arquivos.map((a) => `- ${a.nome}: ${a.url}`),
+    ``,
+    `Guarde este e-mail pra baixar de novo quando precisar.`,
+    `Dúvidas ou problema com algum arquivo? Responda este e-mail.`,
+    ``,
+    disclaimer,
+  ].join("\n");
+
   // Prioridade 1: SendGrid com remetente único verificado — não exige
   // domínio próprio, só confirmar um link de e-mail (Settings → Sender
   // Authentication → Verify a Single Sender no painel do SendGrid).
@@ -246,7 +262,10 @@ async function enviarEmailComMateriais({ email, plano }) {
         from: { email: process.env.SENDGRID_FROM || process.env.SMTP_USER, name: "Mundo dos Blocos" },
         reply_to: { email: replyTo },
         subject: assunto,
-        content: [{ type: "text/html", value: html }],
+        content: [
+          { type: "text/plain", value: texto },
+          { type: "text/html", value: html },
+        ],
       }),
     });
     if (!resposta.ok) {
@@ -270,6 +289,7 @@ async function enviarEmailComMateriais({ email, plano }) {
       to: email,
       replyTo,
       subject: assunto,
+      text: texto,
       html,
     });
     return;
@@ -279,7 +299,7 @@ async function enviarEmailComMateriais({ email, plano }) {
   // Com o remetente de teste onboarding@resend.dev isso só entrega pra
   // caixa da própria conta Resend — não confiar nisso em produção.
   const resend = new Resend(process.env.RESEND_API_KEY);
-  const resultado = await resend.emails.send({ from: remetente, to: email, replyTo, subject: assunto, html });
+  const resultado = await resend.emails.send({ from: remetente, to: email, replyTo, subject: assunto, text: texto, html });
 
   // resend.emails.send() NÃO lança exceção quando a entrega falha — só
   // devolve { error }. Sem checar isso explicitamente, um pagamento
