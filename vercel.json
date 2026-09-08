@@ -9,6 +9,14 @@
       "headers": [{ "key": "X-Robots-Tag", "value": "noindex, nofollow" }]
     }
   ],
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "www.conhecimentodigital.net" }],
+      "destination": "https://conhecimentodigital.net/$1",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     { "source": "/", "destination": "/api/meta-page" },
     { "source": "/((?!api/|assets/|tiktok.*\\.txt$).*)", "destination": "/index.html" }
