@@ -22,11 +22,11 @@ const AVENTURA_NA_FE = {
   description: HERO_FE.subtitulo,
   ogTitle: `${PRODUTO_FE.nome} — ${PRODUTO_FE.subtitulo}`,
   ogDescription: HERO_FE.subtitulo,
-  image: "/assets/aventura-na-fe/af-00-capa.png",
-  imageAlt: "Capa do material imprimível Aventura na Fé",
-  imageWidth: "1054",
-  imageHeight: "1492",
-  imageType: "image/png",
+  image: "/assets/og-aventura-na-fe.jpg",
+  imageAlt: "Aventura na Fé — 25 histórias bíblicas em quadrinhos + atividades para imprimir",
+  imageWidth: "1200",
+  imageHeight: "630",
+  imageType: "image/jpeg",
   robots: "index, follow",
 };
 
