@@ -52,10 +52,19 @@ export default function Obrigado() {
           O material já está a caminho do seu e-mail — o mesmo que você
           usou no pagamento.
         </p>
+        <div className="bloco-sm mt-5 rounded-md border-2 border-ambar-escuro bg-ambar/15 p-4 text-left">
+          <p className="text-sm leading-relaxed font-bold text-tinta/85">
+            📬 O envio é <strong>automático</strong> e pode levar alguns minutos.
+          </p>
+          <p className="mt-2 text-sm leading-relaxed text-tinta/70">
+            Se não achar na caixa de entrada, <strong>procure em Spam / Lixo
+            Eletrônico / Promoções</strong> e marque nosso e-mail como
+            &ldquo;não é spam&rdquo; para os próximos chegarem direto.
+          </p>
+        </div>
         <p className="mt-4 text-sm leading-relaxed text-tinta/65">
-          Não achou? Confere a caixa de spam/promoções. Se em 15 minutos
-          ainda não chegou nada, responde qualquer e-mail nosso ou entra em
-          contato que a gente reenvia na hora.
+          Se em 15 minutos ainda não chegou nada, responde qualquer e-mail
+          nosso ou entra em contato que a gente reenvia na hora.
         </p>
         <p className="mt-4 text-sm leading-relaxed text-tinta/65">
           Se pagou no <strong>Pix</strong>, a confirmação costuma ser
