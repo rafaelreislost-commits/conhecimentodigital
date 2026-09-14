@@ -103,3 +103,32 @@ export async function pegarTokenTiktok() {
   `;
   return rows[0] || null;
 }
+
+// --- Instagram: DMs já respondidas (dedupe) ---------------------------------
+
+let tabelaIgDmPronta = false;
+
+async function garantirTabelaIgDm() {
+  if (tabelaIgDmPronta) return;
+  await sql`
+    CREATE TABLE IF NOT EXISTS ig_dms_respondidas (
+      message_id TEXT PRIMARY KEY,
+      remetente_id TEXT NOT NULL,
+      criado_em TIMESTAMPTZ NOT NULL DEFAULT now()
+    )
+  `;
+  tabelaIgDmPronta = true;
+}
+
+// Retorna true se essa mensagem já tinha sido registrada (já respondida ou em
+// processamento) — o Instagram reenvia o mesmo evento de webhook às vezes.
+export async function jaRespondeuDm({ messageId, remetenteId }) {
+  await garantirTabelaIgDm();
+  const { rows } = await sql`
+    INSERT INTO ig_dms_respondidas (message_id, remetente_id)
+    VALUES (${messageId}, ${remetenteId})
+    ON CONFLICT (message_id) DO NOTHING
+    RETURNING message_id
+  `;
+  return rows.length === 0;
+}
